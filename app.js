@@ -125,14 +125,24 @@ function setDownloadLinks() {
 
 // === Collapsible sections ===
 function initCollapsible() {
+  // Install instructions
   const toggle = document.getElementById('install-toggle');
   const content = document.getElementById('install-content');
-  if (!toggle || !content) return;
+  if (toggle && content) {
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('open');
+      content.classList.toggle('open');
+    });
+  }
 
-  toggle.addEventListener('click', () => {
-    toggle.classList.toggle('open');
-    content.classList.toggle('open');
-  });
+  // Mac help
+  const macToggle = document.getElementById('mac-help-toggle');
+  const macContent = document.getElementById('mac-help-content');
+  if (macToggle && macContent) {
+    macToggle.addEventListener('click', () => {
+      macContent.classList.toggle('open');
+    });
+  }
 }
 
 // === Form handlers ===

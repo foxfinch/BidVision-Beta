@@ -163,7 +163,7 @@
             <span class="platform-icon">&#63743;</span>
             <span class="platform-info">
               <span class="platform-name">macOS (Apple Silicon)</span>
-              <span class="platform-detail">M1, M2, M3, M4 Macs</span>
+              <span class="platform-detail">M1, M2, M3, M4 Macs &mdash; 2020 or newer</span>
             </span>
           </a>
           <a href="#" class="download-btn" id="dl-mac-intel" data-platform="mac-intel">
@@ -180,6 +180,18 @@
               <span class="platform-detail">Windows 10 or later</span>
             </span>
           </a>
+        </div>
+
+        <div class="mac-help">
+          <button class="toggle-link" id="mac-help-toggle" style="margin-top: 0; font-size: 0.8125rem;">Not sure which Mac you have?</button>
+          <div id="mac-help-content" class="collapsible-content" style="margin-top: 8px; text-align: left;">
+            <p>Click the <strong>Apple menu</strong> (&#63743;) in the top-left corner of your screen, then <strong>About This Mac</strong>.</p>
+            <ul style="margin: 8px 0; padding-left: 20px;">
+              <li>If it says <strong>M1, M2, M3, or M4</strong> &rarr; choose <strong>Apple Silicon</strong></li>
+              <li>If it says <strong>Intel</strong> (or doesn't mention a chip) &rarr; choose <strong>Intel</strong></li>
+            </ul>
+            <p style="color: var(--text-muted);">Most Macs from 2020 onward are Apple Silicon. If yours is older than that, it's almost certainly Intel.</p>
+          </div>
         </div>
       </div>
 
