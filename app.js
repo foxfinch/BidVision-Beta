@@ -77,7 +77,26 @@ function submitToGAS(data) {
 function detectPlatform() {
   const ua = navigator.userAgent;
   if (/Windows/.test(ua)) return 'windows';
-  if (/Macintosh/.test(ua)) return 'mac-arm'; // Default to ARM for modern Macs
+  if (/Macintosh/.test(ua)) return detectMacType();
+  return null;
+}
+
+function detectMacType() {
+  // Try WebGL renderer (works in all browsers including Safari)
+  try {
+    const canvas = document.createElement('canvas');
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    if (gl) {
+      const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+      if (debugInfo) {
+        const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+        if (/Apple M\d/i.test(renderer)) return 'mac-arm';
+        if (/Intel/i.test(renderer)) return 'mac-intel';
+      }
+    }
+  } catch (e) { /* fall through */ }
+
+  // Can't determine — don't recommend either
   return null;
 }
 
