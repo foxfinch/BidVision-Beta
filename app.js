@@ -54,7 +54,7 @@ async function validateCode(input) {
   return { valid: false, code: null };
 }
 
-// === Apps Script submission (fire-and-forget via hidden iframe) ===
+// === Apps Script submission (fire-and-forget via fetch no-cors) ===
 function submitToGAS(data) {
   if (GAS_URL === '__APPS_SCRIPT_URL__') {
     console.warn('Apps Script URL not configured — skipping submission');
@@ -62,21 +62,12 @@ function submitToGAS(data) {
   }
 
   try {
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = GAS_URL;
-    form.target = 'gas-frame';
-
-    // Send as a single JSON field (Apps Script will parse e.parameter.data)
-    const input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = 'data';
-    input.value = JSON.stringify(data);
-    form.appendChild(input);
-
-    document.body.appendChild(form);
-    form.submit();
-    document.body.removeChild(form);
+    fetch(GAS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(data),
+    }).catch(err => console.error('GAS submission error:', err));
   } catch (err) {
     console.error('GAS submission error:', err);
   }

@@ -23,7 +23,9 @@ const CONFIG = {
 
 function doPost(e) {
   try {
-    const data = JSON.parse(e.parameter.data);
+    // Supports both raw body (fetch text/plain) and form parameter
+    const raw = e.postData ? e.postData.contents : null;
+    const data = JSON.parse(raw || e.parameter.data);
 
     switch (data.action) {
       case 'register':
