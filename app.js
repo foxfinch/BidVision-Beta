@@ -13,13 +13,13 @@ const VALID_CODE_HASHES = {
 };
 
 // Apps Script web app URL (set after deployment)
-const GAS_URL = '__APPS_SCRIPT_URL__';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbwjblbmuaLILUOfsG3oW9ByJaWLWytR0wpZkq0yrms_DN97CwUOZhYAJCqN_oy6teXpZA/exec';
 
 // Download URLs (update per release)
 const DOWNLOADS = {
-  'mac-arm':  '__MAC_ARM_URL__',
-  'mac-intel': '__MAC_INTEL_URL__',
-  'windows':  '__WINDOWS_URL__',
+  'mac-arm':  'https://github.com/mjamsky/BidVision-Beta/releases/download/v0.2.0-b5/BidVision-macOS-Apple-Silicon.zip',
+  'mac-intel': 'https://github.com/mjamsky/BidVision-Beta/releases/download/v0.2.0-b5/BidVision-macOS-Intel.zip',
+  'windows':  'https://github.com/mjamsky/BidVision-Beta/releases/download/v0.2.0-b5/BidVision-Windows.zip',
 };
 
 // === State management ===
