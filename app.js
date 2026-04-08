@@ -122,6 +122,12 @@ function highlightPlatform() {
     badge.textContent = 'Recommended';
     btn.appendChild(badge);
   }
+
+  // Show Gatekeeper warning only for Mac users
+  const gkWarning = document.querySelector('.gatekeeper-warning');
+  if (gkWarning) {
+    gkWarning.style.display = (platform === 'mac-arm' || platform === 'mac-intel' || platform === null) ? '' : 'none';
+  }
 }
 
 function setDownloadLinks() {
@@ -298,6 +304,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initToggles();
   initCollapsible();
   setDownloadLinks();
+
+  // Hide Gatekeeper warning for Windows users by default
+  const platform = detectPlatform();
+  const gkWarning = document.querySelector('.gatekeeper-warning');
+  if (gkWarning && platform === 'windows') {
+    gkWarning.style.display = 'none';
+  }
 
   if (state === 'downloads') {
     highlightPlatform();
