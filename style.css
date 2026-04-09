@@ -567,8 +567,8 @@ body {
 }
 
 .why-grid {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 20px;
   margin-bottom: 24px;
 }
@@ -626,4 +626,21 @@ body {
   .radio-group { flex-direction: column; }
   .feedback-links { flex-direction: column; }
   .mobile-notice.show { display: block; }
+}
+
+@media (min-width: 900px) {
+  .container {
+    max-width: 960px;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .state .card,
+  .state .toggle-link {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

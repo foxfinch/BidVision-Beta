@@ -5,21 +5,19 @@
 
 // === Configuration ===
 // SHA-256 hashes of valid beta codes (add new months here)
-const VALID_CODE_HASHES = {
-  '64a8f99b4b1114f67be79ed768041dc017dff6f3ee56e3e3d8c09e6e49eb8ce4': 'BID-0426',
-  // Add future months:
-  // 'hash_here': 'BID-0526',
-  // 'hash_here': 'BID-0626',
-};
+const VALID_CODE_HASHES = new Set([
+  '64a8f99b4b1114f67be79ed768041dc017dff6f3ee56e3e3d8c09e6e49eb8ce4',
+  // Add future months (SHA-256 of uppercase code):
+]);
 
 // Apps Script web app URL (set after deployment)
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbwjblbmuaLILUOfsG3oW9ByJaWLWytR0wpZkq0yrms_DN97CwUOZhYAJCqN_oy6teXpZA/exec';
 
 // Download URLs (update per release)
 const DOWNLOADS = {
-  'mac-arm':  'https://github.com/mjamsky/BidVision-Beta/releases/download/v0.2.0-b5/BidVision-macOS-Apple-Silicon.zip',
-  'mac-intel': 'https://github.com/mjamsky/BidVision-Beta/releases/download/v0.2.0-b5/BidVision-macOS-Intel.zip',
-  'windows':  'https://github.com/mjamsky/BidVision-Beta/releases/download/v0.2.0-b5/BidVision-Windows-Setup.exe',
+  'mac-arm':  'https://github.com/mjamsky/BidVision-Beta/releases/download/v0.2.0-b6/BidVision-macOS-Apple-Silicon.zip',
+  'mac-intel': 'https://github.com/mjamsky/BidVision-Beta/releases/download/v0.2.0-b6/BidVision-macOS-Intel.zip',
+  'windows':  'https://github.com/mjamsky/BidVision-Beta/releases/download/v0.2.0-b6/BidVision-Windows-Setup.exe',
 };
 
 // === State management ===
@@ -48,8 +46,8 @@ async function sha256(text) {
 async function validateCode(input) {
   const normalized = input.trim().toUpperCase();
   const hash = await sha256(normalized);
-  if (VALID_CODE_HASHES[hash]) {
-    return { valid: true, code: VALID_CODE_HASHES[hash] };
+  if (VALID_CODE_HASHES.has(hash)) {
+    return { valid: true, code: normalized };
   }
   return { valid: false, code: null };
 }
@@ -123,10 +121,10 @@ function highlightPlatform() {
     btn.appendChild(badge);
   }
 
-  // Show Gatekeeper warning only for Mac users
-  const gkWarning = document.querySelector('.gatekeeper-warning');
-  if (gkWarning) {
-    gkWarning.style.display = (platform === 'mac-arm' || platform === 'mac-intel' || platform === null) ? '' : 'none';
+  // Show SmartScreen warning only for Windows users
+  const ssWarning = document.querySelector('.smartscreen-warning');
+  if (ssWarning) {
+    ssWarning.style.display = (platform === 'windows') ? '' : 'none';
   }
 }
 
@@ -192,6 +190,7 @@ function initRegistrationForm() {
     // Save state and show confirmation
     localStorage.setItem('bidvision_registered', 'true');
     localStorage.setItem('bidvision_name', data.name);
+    localStorage.setItem('bidvision_email', data.email);
     showState('registered');
   });
 }
@@ -305,11 +304,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initCollapsible();
   setDownloadLinks();
 
-  // Hide Gatekeeper warning for Windows users by default
+  // Show SmartScreen warning for Windows users on downloads page
   const platform = detectPlatform();
-  const gkWarning = document.querySelector('.gatekeeper-warning');
-  if (gkWarning && platform === 'windows') {
-    gkWarning.style.display = 'none';
+  const ssWarningInit = document.querySelector('.smartscreen-warning');
+  if (ssWarningInit && platform === 'windows') {
+    ssWarningInit.style.display = '';
   }
 
   if (state === 'downloads') {
