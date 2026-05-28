@@ -12,13 +12,13 @@
  */
 
 const CONFIG = {
-  SHEET_ID: '1JmRzuki4XGpdg4Tbyb45q-lZxQuwwMo5gqmnVgU9OoQ',
-  BETA_CODE: 'BID-0426',           // Current month's code (add future months to VALID_CODES)
-  VALID_CODES: ['BID-0426'],       // All valid codes (old months stay valid)
+  SHEET_ID: '__NEW_SHEET_ID__',    // <-- new Beta Tracker Sheet ID (jameson@foxfinch.co Drive)
+  BETA_CODE: 'BID-0726',           // Bid-month code, format BID-MMYY (07/26 = July 2026 bids)
+  VALID_CODES: ['BID-0726'],       // Old codes invalidated on rotation; add future months here
   AUTO_APPROVE_LIMIT: 10,
-  OWNER_EMAIL: 'mjs.designer+bidvision@gmail.com',
-  LANDING_PAGE_URL: 'https://mjamsky.github.io/BidVision-Beta/',
-  FORM_URL: 'https://docs.google.com/forms/d/e/1FAIpQLSdStcbITUtQCGoyLgHBj3yDj13_CFO4JpEVCzlKNlAGPpwZCQ/viewform',
+  OWNER_EMAIL: 'hello@bidvision.app',
+  LANDING_PAGE_URL: 'https://bidvision.app/beta',
+  FORM_URL: '__NEW_FORM_URL__',    // <-- new Beta Feedback Form /viewform URL
 };
 
 function doPost(e) {

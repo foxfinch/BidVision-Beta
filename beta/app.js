@@ -6,7 +6,7 @@
 // === Configuration ===
 // SHA-256 hashes of valid beta codes (add new months here)
 const VALID_CODE_HASHES = new Set([
-  '64a8f99b4b1114f67be79ed768041dc017dff6f3ee56e3e3d8c09e6e49eb8ce4',
+  '50ff672a154bb5466306149b200530576c2ffabef4a7c93884c447e94e9ed112', // BID-0726 (July 2026 bids)
   // Add future months (SHA-256 of uppercase code):
 ]);
 
@@ -15,9 +15,9 @@ const GAS_URL = 'https://script.google.com/macros/s/AKfycbwjblbmuaLILUOfsG3oW9By
 
 // Download URLs (update per release)
 const DOWNLOADS = {
-  'mac-arm':  'https://github.com/mjamsky/BidVision-Beta/releases/download/v0.2.0-b6/BidVision-macOS-Apple-Silicon.zip',
-  'mac-intel': 'https://github.com/mjamsky/BidVision-Beta/releases/download/v0.2.0-b6/BidVision-macOS-Intel.zip',
-  'windows':  'https://github.com/mjamsky/BidVision-Beta/releases/download/v0.2.0-b6/BidVision-Windows-Setup.exe',
+  'mac-arm':  'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b6/BidVision-macOS-Apple-Silicon.zip',
+  'mac-intel': 'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b6/BidVision-macOS-Intel.zip',
+  'windows':  'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b6/BidVision-0.2.0-b6.Setup.exe',
 };
 
 // === State management ===

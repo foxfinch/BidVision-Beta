@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BidVision Beta</title>
+  <link rel="icon" href="assets/icon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Hero -->
+    <header class="hero">
+      <img src="assets/icon.png" alt="BidVision" class="hero-icon">
+      <h1 class="brand">
+        <span class="brand-bid">BID</span><span class="brand-vision">VISION</span>
+      </h1>
+      <p class="tagline">Smart tools for smarter bidding.</p>
+      <span class="privacy-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        All data stays on your device
+      </span>
+    </header>
+
+    <!-- Why BidVision -->
+    <section class="why-section">
+      <div class="card">
+        <h2 class="card-title">Why BidVision?</h2>
+        <p class="why-lead">Your bid sheet has over a thousand sequences. BidVision helps you find the ones that actually fit your life &mdash; faster and with more flexibility than anything else out there.</p>
+
+        <div class="why-grid">
+          <div class="why-item">
+            <div class="why-icon">&#128197;</div>
+            <h3 class="why-heading">Build your schedule around your life</h3>
+            <p class="why-text">Mark the days that matter &mdash; a wedding, a trip, your kid's recital &mdash; and BidVision finds trips that work around them. Or prioritize the trips you like and see which days they fall on. It works either way.</p>
+          </div>
+
+          <div class="why-item">
+            <div class="why-icon">&#128269;</div>
+            <h3 class="why-heading">More flexible than what you're using now</h3>
+            <p class="why-text">BidVision is built for how we actually bid &mdash; with more filters, more control, and more ways to search than the current tools offer. Updated, robust, and designed around real crew needs.</p>
+          </div>
+
+          <div class="why-item">
+            <div class="why-icon">&#128142;</div>
+            <h3 class="why-heading">Soft filters find hidden gems</h3>
+            <p class="why-text">Most tools use hard yes-or-no filters that hide everything else. BidVision lets you prefer, allow, or exclude &mdash; so trips that almost match still show up, scored and ranked. You might find a sequence you'd never have seen otherwise.</p>
+          </div>
+        </div>
+
+        <p class="why-bottom">BidVision is a pre-bid research tool &mdash; use it anytime to explore your options before the bidding window opens.</p>
+      </div>
+    </section>
+
+    <!-- State: Registration Form -->
+    <div id="state-register" class="state">
+      <div class="card">
+        <h2 class="card-title">Join the Beta</h2>
+        <p class="card-subtitle">Help shape BidVision before launch. Sign up and we'll send you access.</p>
+
+        <form id="register-form">
+          <div class="form-group">
+            <label class="form-label" for="reg-name">Name</label>
+            <input type="text" id="reg-name" class="form-input" required autocomplete="name" placeholder="First name is fine">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-email">Email</label>
+            <input type="email" id="reg-email" class="form-input" required autocomplete="email" placeholder="For your access code">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-base">Base</label>
+            <select id="reg-base" class="form-select" required>
+              <option value="" disabled selected>Select your base</option>
+              <option>BOS</option>
+              <option>CLT</option>
+              <option>DCA</option>
+              <option>DFW</option>
+              <option>LAX</option>
+              <option>LGA</option>
+              <option>MIA</option>
+              <option>ORD</option>
+              <option>PHL</option>
+              <option>PHX</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Platform</label>
+            <div class="radio-group">
+              <div class="radio-option">
+                <input type="radio" name="platform" id="plat-mac-arm" value="macOS (Apple Silicon)" required>
+                <label for="plat-mac-arm">Mac (Apple Silicon)</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" name="platform" id="plat-mac-intel" value="macOS (Intel)">
+                <label for="plat-mac-intel">Mac (Intel)</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" name="platform" id="plat-windows" value="Windows">
+                <label for="plat-windows">Windows</label>
+              </div>
+            </div>
+            <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 8px;">
+              <strong>Not sure which Mac?</strong> &#63743; menu &rarr; About This Mac. M1/M2/M3/M4 = Apple Silicon. Anything else = Intel.
+            </p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-phone">Phone <span class="optional">(optional)</span></label>
+            <input type="tel" id="reg-phone" class="form-input" autocomplete="tel" placeholder="For group chat updates">
+          </div>
+
+          <div class="form-group">
+            <div class="checkbox-group">
+              <input type="checkbox" id="reg-sms">
+              <label for="reg-sms">Add me to the beta group chat (iMessage, standard messaging rates apply)</label>
+            </div>
+          </div>
+
+          <p style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 20px;">
+            Your info is only used for beta coordination and won't be shared.
+          </p>
+
+          <button type="submit" class="btn btn-primary" id="register-btn">Join the Beta</button>
+          <p id="register-error" class="error-text"></p>
+        </form>
+      </div>
+
+      <button class="toggle-link" id="show-code-entry">Already have a code?</button>
+    </div>
+
+    <!-- State: Registered (waiting for code) -->
+    <div id="state-registered" class="state">
+      <div class="card">
+        <div class="message">
+          <div class="message-icon">&#9993;</div>
+          <p class="message-title" id="registered-title">You're on the list!</p>
+          <p class="message-text" id="registered-text">Check your email (and spam folder) for your access code.</p>
+        </div>
+
+        <div class="code-entry-inline">
+          <h3 style="font-size: 0.9375rem; font-weight: 600; margin-bottom: 12px;">Enter your access code</h3>
+          <form id="code-form-registered">
+            <div class="form-group" style="margin-bottom: 12px;">
+              <input type="text" class="form-input code-input" placeholder="e.g. BID-XXXX" autocomplete="off" spellcheck="false" style="text-transform: uppercase; letter-spacing: 0.05em;">
+            </div>
+            <button type="submit" class="btn btn-primary">Unlock Downloads</button>
+            <p class="error-text code-error"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- State: Code Entry (returning user / shared code) -->
+    <div id="state-code" class="state">
+      <div class="card">
+        <h2 class="card-title">Welcome back</h2>
+        <p class="card-subtitle">Enter your email and access code to unlock downloads.</p>
+
+        <form id="code-form-direct">
+          <div class="form-group">
+            <label class="form-label" for="code-email">Email</label>
+            <input type="email" id="code-email" class="form-input" required autocomplete="email" placeholder="The email you registered with">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="code-direct">Access Code</label>
+            <input type="text" id="code-direct" class="form-input code-input" required placeholder="e.g. BID-XXXX" autocomplete="off" spellcheck="false" style="text-transform: uppercase; letter-spacing: 0.05em;">
+          </div>
+          <button type="submit" class="btn btn-primary">Unlock Downloads</button>
+          <p id="code-direct-error" class="error-text"></p>
+        </form>
+      </div>
+
+      <button class="toggle-link" id="show-register">New here? Register instead</button>
+    </div>
+
+    <!-- State: Authenticated (downloads) -->
+    <div id="state-downloads" class="state">
+      <div class="card">
+        <h2 class="card-title">You're in.</h2>
+        <p class="card-subtitle">Download BidVision for your platform.</p>
+
+        <div class="mobile-notice" id="mobile-notice">
+          BidVision is a desktop app &mdash; open this page on your computer to download.
+        </div>
+
+        <div class="downloads" id="download-buttons">
+          <a href="#" class="download-btn" id="dl-mac-arm" data-platform="mac-arm">
+            <span class="platform-icon">&#63743;</span>
+            <span class="platform-info">
+              <span class="platform-name">macOS (Apple Silicon)</span>
+              <span class="platform-detail">M1, M2, M3, M4 Macs &mdash; 2020 or newer</span>
+            </span>
+          </a>
+          <a href="#" class="download-btn" id="dl-mac-intel" data-platform="mac-intel">
+            <span class="platform-icon">&#63743;</span>
+            <span class="platform-info">
+              <span class="platform-name">macOS (Intel)</span>
+              <span class="platform-detail">Pre-2020 Macs</span>
+            </span>
+          </a>
+
+          <a href="#" class="download-btn" id="dl-windows" data-platform="windows">
+            <span class="platform-icon">&#8862;</span>
+            <span class="platform-info">
+              <span class="platform-name">Windows</span>
+              <span class="platform-detail">Windows 10 or later</span>
+            </span>
+          </a>
+        </div>
+
+        <div class="smartscreen-warning" style="margin-top: 12px; padding: 14px 16px; background: rgba(201, 138, 0, 0.08); border: 1px solid rgba(201, 138, 0, 0.25); border-radius: 8px; font-size: 0.8125rem; line-height: 1.6; display: none;">
+          <strong style="color: var(--text-primary);">&#9888; Windows SmartScreen may show a warning.</strong>
+          <span style="color: var(--text-secondary);">Click <strong>More info</strong>, then <strong>Run anyway</strong>. This is normal for new apps without an extended trust history. You only need to do this once.</span>
+        </div>
+
+        <div class="mac-help">
+          <button class="toggle-link" id="mac-help-toggle" style="margin-top: 0; font-size: 0.8125rem;">Not sure which Mac you have?</button>
+          <div id="mac-help-content" class="collapsible-content" style="margin-top: 8px; text-align: left;">
+            <p>Click the <strong>Apple menu</strong> (&#63743;) in the top-left corner of your screen, then <strong>About This Mac</strong>.</p>
+            <ul style="margin: 8px 0; padding-left: 20px;">
+              <li>If it says <strong>M1, M2, M3, or M4</strong> &rarr; choose <strong>Apple Silicon</strong></li>
+              <li>If it says <strong>Intel</strong> (or doesn't mention a chip) &rarr; choose <strong>Intel</strong></li>
+            </ul>
+            <p style="color: var(--text-muted);">Most Macs from 2020 onward are Apple Silicon. If yours is older than that, it's almost certainly Intel.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Install instructions -->
+      <div class="card">
+        <div class="collapsible">
+          <button class="collapsible-toggle" id="install-toggle" type="button">
+            <span class="arrow">&#9654;</span> First-time install instructions
+          </button>
+          <div class="collapsible-content" id="install-content">
+            <h4>macOS</h4>
+            <ol>
+              <li>Unzip the downloaded file</li>
+              <li>Drag BidVision to your Applications folder</li>
+              <li>Double-click to open &mdash; that's it</li>
+            </ol>
+
+            <h4>Windows</h4>
+            <ol>
+              <li>Run the downloaded <strong>BidVision-Windows-Setup.exe</strong></li>
+              <li>If SmartScreen appears, click <strong>More info</strong> then <strong>Run anyway</strong></li>
+              <li>BidVision installs and opens automatically</li>
+              <li>Find it in your Start Menu from now on</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feedback -->
+      <div class="card">
+        <h2 class="card-title">Found something?</h2>
+        <p class="card-subtitle">Bugs, confusion, or ideas &mdash; we want to hear it all.</p>
+        <div class="feedback-links">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdStcbITUtQCGoyLgHBj3yDj13_CFO4JpEVCzlKNlAGPpwZCQ/viewform" target="_blank" class="feedback-link">
+            &#128221; Report an issue
+          </a>
+        </div>
+      </div>
+
+      <p class="version-info">
+        <span id="version-display">v0.2.0-beta.6</span> &middot; Bookmark this page &mdash; updates will appear here.
+      </p>
+    </div>
+
+    <!-- State: Expired -->
+    <div id="state-expired" class="state">
+      <div class="card">
+        <div class="message">
+          <div class="message-icon">&#128587;</div>
+          <p class="message-title">The beta period has ended.</p>
+          <p class="message-text">Thanks for testing BidVision! Stay tuned for the public release.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    BidVision is not affiliated with or endorsed by any airline.<br>
+    No airline data is sent to or stored by BidVision servers.<br>
+    All parsing, filtering, and scoring happens on your device.<br>
+    <br>
+    &copy; 2026 FoxFinch Adaptations LLC. BidVision is a product of FoxFinch Adaptations LLC.
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
