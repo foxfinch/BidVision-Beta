@@ -11,7 +11,7 @@ const VALID_CODE_HASHES = new Set([
 ]);
 
 // Apps Script web app URL (set after deployment)
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbwjblbmuaLILUOfsG3oW9ByJaWLWytR0wpZkq0yrms_DN97CwUOZhYAJCqN_oy6teXpZA/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbyjy2oY1J3wHCe1TUKbeEmWIgA7GXzkwb4R3J0TPVNG5Hmt3W8ElmlQcmN2kaW_xImoOg/exec';
 
 // Download URLs (update per release)
 const DOWNLOADS = {
