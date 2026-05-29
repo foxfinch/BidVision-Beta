@@ -6,8 +6,9 @@
 // === Configuration ===
 // SHA-256 hashes of valid beta codes (add new months here)
 const VALID_CODE_HASHES = new Set([
+  '64a8f99b4b1114f67be79ed768041dc017dff6f3ee56e3e3d8c09e6e49eb8ce4', // BID-0426 (April 2026) — kept valid
   '50ff672a154bb5466306149b200530576c2ffabef4a7c93884c447e94e9ed112', // BID-0726 (July 2026 bids)
-  // Add future months (SHA-256 of uppercase code):
+  // All codes stay valid (shared codes tracked, not invalidated). Add future months below:
 ]);
 
 // Apps Script web app URL (set after deployment)

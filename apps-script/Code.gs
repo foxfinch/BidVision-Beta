@@ -13,8 +13,8 @@
 
 const CONFIG = {
   SHEET_ID: '1nfBx1L0yo4j20qjsfcP4mnaveSe0oQt5uz-78egYqNI',  // Beta Tracker (jameson@foxfinch.co)
-  BETA_CODE: 'BID-0726',           // Bid-month code, format BID-MMYY (07/26 = July 2026 bids)
-  VALID_CODES: ['BID-0726'],       // Old codes invalidated on rotation; add future months here
+  BETA_CODE: 'BID-0726',           // Code emailed to NEW signups (format BID-MMYY = bid month/year)
+  VALID_CODES: ['BID-0426', 'BID-0726'],  // All codes stay valid (shared-code tracking); add new months here
   AUTO_APPROVE_LIMIT: 10,
   OWNER_EMAIL: 'hello@bidvision.app',
   LANDING_PAGE_URL: 'https://bidvision.app/beta',
