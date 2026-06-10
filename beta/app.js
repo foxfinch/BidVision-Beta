@@ -15,10 +15,13 @@ const VALID_CODE_HASHES = new Set([
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbyjy2oY1J3wHCe1TUKbeEmWIgA7GXzkwb4R3J0TPVNG5Hmt3W8ElmlQcmN2kaW_xImoOg/exec';
 
 // Download URLs (update per release)
+// b7 — DEV: confirm the exact artifact filenames and that the v0.2.0-b7 GitHub
+// release is published before this branch goes live. Links 404 until then.
 const DOWNLOADS = {
-  'mac-arm':  'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b6/BidVision-macOS-Apple-Silicon.zip',
-  'mac-intel': 'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b6/BidVision-macOS-Intel.zip',
-  'windows':  'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b6/BidVision-0.2.0-b6.Setup.exe',
+  'mac-arm':  'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b7/BidVision-macOS-Apple-Silicon.zip',
+  'mac-intel': 'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b7/BidVision-macOS-Intel.zip',
+  'windows':  'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b7/BidVision-0.2.0-b7.Setup.exe',
+  'linux':    'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b7/BidVision-0.2.0-b7-amd64.deb',
 };
 
 // === State management ===
@@ -77,6 +80,8 @@ function detectPlatform() {
   const ua = navigator.userAgent;
   if (/Windows/.test(ua)) return 'windows';
   if (/Macintosh/.test(ua)) return detectMacType();
+  if (/CrOS/.test(ua)) return 'linux';                          // ChromeOS
+  if (/Linux/.test(ua) && !/Android/.test(ua)) return 'linux';  // desktop Linux (Android handled as mobile)
   return null;
 }
 

@@ -106,6 +106,10 @@
                 <input type="radio" name="platform" id="plat-windows" value="Windows">
                 <label for="plat-windows">Windows</label>
               </div>
+              <div class="radio-option">
+                <input type="radio" name="platform" id="plat-linux" value="Linux / ChromeOS">
+                <label for="plat-linux">Linux / Chromebook</label>
+              </div>
             </div>
             <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 8px;">
               <strong>Not sure which Mac?</strong> &#63743; menu &rarr; About This Mac. M1/M2/M3/M4 = Apple Silicon. Anything else = Intel.
@@ -214,6 +218,14 @@
               <span class="platform-detail">Windows 10 or later</span>
             </span>
           </a>
+
+          <a href="#" class="download-btn" id="dl-linux" data-platform="linux">
+            <span class="platform-icon">&#128039;</span>
+            <span class="platform-info">
+              <span class="platform-name">Linux / Chromebook</span>
+              <span class="platform-detail">Debian/Ubuntu .deb &mdash; Chromebooks via Crostini</span>
+            </span>
+          </a>
         </div>
 
         <div class="smartscreen-warning" style="margin-top: 12px; padding: 14px 16px; background: rgba(201, 138, 0, 0.08); border: 1px solid rgba(201, 138, 0, 0.25); border-radius: 8px; font-size: 0.8125rem; line-height: 1.6; display: none;">
@@ -255,6 +267,13 @@
               <li>BidVision installs and opens automatically</li>
               <li>Find it in your Start Menu from now on</li>
             </ol>
+
+            <h4>Linux / Chromebook</h4>
+            <ol>
+              <li><strong>Chromebook only:</strong> turn on Linux first &mdash; <strong>Settings &rarr; About ChromeOS &rarr; Developers &rarr; Linux development environment &rarr; Set up</strong>. (One-time; takes a couple of minutes.)</li>
+              <li>Double-click the downloaded <strong>.deb</strong> file to install it &mdash; or in a terminal run <code>sudo dpkg -i BidVision*.deb</code></li>
+              <li>Launch BidVision from your app launcher</li>
+            </ol>
           </div>
         </div>
       </div>
@@ -271,7 +290,7 @@
       </div>
 
       <p class="version-info">
-        <span id="version-display">v0.2.0-beta.6</span> &middot; Bookmark this page &mdash; updates will appear here.
+        <span id="version-display">v0.2.0-beta.7</span> &middot; Bookmark this page &mdash; updates will appear here.
       </p>
     </div>
 
