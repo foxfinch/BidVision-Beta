@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keep going with BidVision &mdash; BidVision</title>
+  <!-- PERMANENT SLUG: this page must always live at exactly /continue.
+       It is the stable indirection target the desktop app links to from its
+       beta-expiry banner and "Beta Build Expired" modal (https://bidvision.app/continue).
+       The app's link is frozen per-build, so the post-expiry destination is decided
+       HERE, not by shipping a new build.
+       Current behavior: RE-BETA MODE (get the latest beta build).
+       At public launch, swap to LIVE MODE (see commented block at the bottom of <main>). -->
+  <meta name="description" content="Your BidVision beta build expired on purpose. Here's how to grab the latest build and keep going&mdash;your saved setup carries over.">
+  <link rel="icon" href="/beta/assets/icon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cognac: #8B5E3C;
+      --cognac-dark: #6F4A2F;
+      --sage: #5B7A5B;
+      --surface-app: #F4F2EF;
+      --surface-alt: #EDEAE4;
+      --card: #FFFFFF;
+      --border: rgba(42, 42, 40, 0.10);
+      --text-primary: #2A2A28;
+      --text-secondary: #5A5855;
+      --text-muted: #7A766F;
+      --font-sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --shadow: 0 12px 36px rgba(42, 42, 40, 0.14);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --surface-app: #080B12;
+        --surface-alt: #0E121B;
+        --card: #151A24;
+        --border: rgba(255, 255, 255, 0.10);
+        --text-primary: #F9F6F2;
+        --text-secondary: #D6D1CB;
+        --text-muted: #B0ACA6;
+        --shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: var(--font-sans); background: var(--surface-app); color: var(--text-primary); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { color: var(--cognac); }
+
+    .nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--surface-app) 88%, transparent); backdrop-filter: saturate(140%) blur(10px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1080px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { font-size: 1.4rem; letter-spacing: 0.02em; text-decoration: none; }
+    .brand-bid { font-weight: 700; color: var(--cognac); }
+    .brand-vision { font-weight: 300; letter-spacing: 0.06em; color: var(--cognac); }
+    .nav-links { display: flex; align-items: center; gap: 22px; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; font-weight: 500; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .btn { display: inline-block; background: var(--cognac); color: #fff; font-size: 0.95rem; font-weight: 600; text-decoration: none; padding: 11px 20px; border-radius: 8px; transition: background 150ms ease; }
+    .btn:hover { background: var(--cognac-dark); }
+
+    .doc { max-width: 760px; margin: 0 auto; padding: 56px 24px 24px; }
+    .doc-head { margin-bottom: 8px; }
+    .doc-head h1 { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 700; letter-spacing: -0.01em; margin: 0 0 10px; }
+    .lede { font-size: 1.2rem; color: var(--text-secondary); margin: 0 0 8px; }
+
+    .cta-row { margin: 26px 0 8px; }
+    .btn-lg { display: inline-block; background: var(--cognac); color: #fff; font-size: 1.05rem; font-weight: 600; text-decoration: none; padding: 14px 26px; border-radius: 10px; transition: background 150ms ease; }
+    .btn-lg:hover { background: var(--cognac-dark); }
+
+    .step { padding: 40px 0; border-top: 1px solid var(--border); }
+    .step:first-of-type { border-top: none; }
+    .step h2 { font-size: 1.4rem; font-weight: 600; margin: 0 0 12px; letter-spacing: -0.01em; display: flex; align-items: baseline; gap: 12px; }
+    .num { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 9999px; background: var(--cognac); color: #fff; font-size: 0.95rem; font-weight: 700; align-self: center; }
+    .step p { color: var(--text-secondary); margin: 0 0 14px; font-size: 1.05rem; }
+    .step ol { color: var(--text-secondary); font-size: 1.05rem; padding-left: 1.3em; }
+    .step ol li { margin-bottom: 10px; }
+
+    .callout { background: color-mix(in srgb, var(--sage) 12%, transparent); border: 1px solid color-mix(in srgb, var(--sage) 35%, transparent); border-radius: 12px; padding: 18px 20px; margin-top: 8px; }
+    .callout h2 { margin-top: 0; }
+    .callout p { color: var(--text-primary); margin-bottom: 0; }
+
+    .footer { text-align: center; padding: 40px 24px; font-size: 0.8rem; line-height: 1.7; color: var(--text-muted); border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="/"><span class="brand-bid">BID</span><span class="brand-vision">VISION</span></a>
+      <div class="nav-links">
+        <a class="btn" href="/beta">Apply for beta test</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="doc">
+    <!-- ===== RE-BETA MODE (current) ===== -->
+    <header class="doc-head">
+      <h1>Keep going with BidVision.</h1>
+      <p class="lede">Your build reached its expiration date. That's by design&mdash;here's how to pick up right where you left off.</p>
+      <div class="cta-row">
+        <a class="btn-lg" href="https://bidvision.app/beta">Get the latest build</a>
+      </div>
+    </header>
+
+    <section class="step">
+      <h2>Why builds expire</h2>
+      <p>BidVision is still in beta, and beta builds are set to expire on purpose. It keeps everyone on the newest, safest build instead of running an old one with bugs we've already fixed. So an expiry notice isn't a problem&mdash;it's just a nudge to grab the current build. It takes about a minute.</p>
+    </section>
+
+    <section class="step">
+      <h2>If BidVision says your build expired</h2>
+      <ol>
+        <li>Go to <a href="https://bidvision.app/beta">bidvision.app/beta</a>.</li>
+        <li>Enter your access code.</li>
+        <li>Download the latest build for your computer (Mac, Windows, or Chromebook/Linux).</li>
+        <li>Install it over your old copy&mdash;no need to uninstall first.</li>
+      </ol>
+      <div class="callout">
+        <h2>Your setup carries over.</h2>
+        <p>Your saved bid sheets, availability, and preferences live in your computer's app-data folder, not inside the app itself&mdash;so updating the build leaves all of it untouched. Open the new build and everything's right where you left it.</p>
+      </div>
+    </section>
+
+    <section class="step">
+      <h2>One more thing&mdash;for early adopters</h2>
+      <p>When BidVision goes live, beta testers get founding-member pricing. More on that soon&mdash;thanks for helping us build it.</p>
+    </section>
+
+    <!-- ===== LIVE MODE (swap in at public launch) =====
+         When BidVision goes live, replace the RE-BETA MODE <main> content above with
+         live-mode content. The /continue slug stays the same; only what's served here changes.
+
+         Live-mode content should include:
+           1. A founding-member coupon code for beta testers, e.g.:
+                <section class="step">
+                  <h2>Your founding-member offer</h2>
+                  <p>As a beta tester, here's your founding-member pricing. Use code
+                     <strong>FOUNDING-XXXX</strong> at checkout.</p>
+                  <div class="cta-row">
+                    <a class="btn-lg" href="https://bidvision.app/signup?code=FOUNDING-XXXX">Claim founding-member pricing</a>
+                  </div>
+                </section>
+           2. A link to the live signup / billing flow (replace the placeholder URL above
+              with the real signup/billing endpoint once it exists).
+           3. Keep a short "moving from beta? your data carries over" reassurance, mirroring
+              the RE-BETA MODE callout, so upgrading testers don't fear losing their setup.
+
+         Leave the nav "Apply for beta test" button only if beta is still open at launch;
+         otherwise point it at the live signup. The footer below stays as-is.
+    -->
+  </main>
+
+  <footer class="footer">
+    BidVision, a product of FoxFinch Adaptations LLC.<br>
+    &copy; 2026 FoxFinch Adaptations LLC. Not affiliated with or endorsed by any airline.
+  </footer>
+</body>
+</html>
