@@ -14,18 +14,19 @@ const VALID_CODE_HASHES = new Set([
 // Apps Script web app URL (set after deployment)
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbyjy2oY1J3wHCe1TUKbeEmWIgA7GXzkwb4R3J0TPVNG5Hmt3W8ElmlQcmN2kaW_xImoOg/exec';
 
-// Download URLs (update per release)
-// LAUNCH = v0.2.0-b8 on foxfinch/BidVision-Beta. At publish, fill mac/linux/android
-// with the EXACT asset names off the release (no guessing). Linux now ships amd64 + arm64.
+// Download URLs — LAUNCH = v0.2.0-b8 on foxfinch/BidVision-Beta (published 2026-06-11).
+// Names read off the published release (no guessing). Linux ships amd64 + arm64.
 // WINDOWS: intentionally points to the PREVIOUS release (v0.2.0-b6) as a temporary
-// fallback — b8 Windows build wasn't ready at launch; swap to b8 when it compiles.
-// Verified live 2026-06-11. iOS has NO URL — invite-only via TestFlight (email path in UI).
+// fallback — the b8 Windows build wasn't ready at launch; swap to b8 when it compiles.
+// iOS has NO URL — invite-only via TestFlight (email path in the UI).
+const B8 = 'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b8';
 const DOWNLOADS = {
-  'mac-arm':  'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b7/BidVision-macOS-Apple-Silicon.zip', // TODO b8: wire real name at publish
-  'mac-intel': 'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b7/BidVision-macOS-Intel.zip', // TODO b8: wire real name at publish
-  'windows':  'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b6/BidVision-0.2.0-b6.Setup.exe', // TEMP fallback: previous (b6) build, verified live
-  'linux':    'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b7/BidVision-0.2.0-b7-amd64.deb', // TODO b8: wire real name at publish
-  'android':  'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b7/BidVision-0.2.0-b7.apk', // TODO b8: wire real name at publish
+  'mac-arm':      `${B8}/BidVision-macOS-Apple-Silicon-0.2.0-b8.zip`,
+  'mac-intel':    `${B8}/BidVision-macOS-Intel-0.2.0-b8.zip`,
+  'windows':      'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b6/BidVision-0.2.0-b6.Setup.exe', // TEMP b6 fallback
+  'linux':        `${B8}/BidVision-Linux-amd64-0.2.0-b8.deb`,
+  'linux-arm64':  `${B8}/BidVision-Linux-arm64-0.2.0-b8.deb`,
+  'android':      `${B8}/BidVision-Android-0.2.0-b8.apk`,
 };
 
 // === State management ===
