@@ -4,7 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BidVision &mdash; Smart tools for smarter bidding</title>
-  <meta name="description" content="BidVision helps flight attendants find the trips that fit their life. Coming soon.">
+  <!-- Marketing homepage (promoted from home.html). DEPLOY GATE: the img/ screenshots are
+       still the REAL Feb 2026 PHL data set — swap for the synthetic set at
+       BidVision-Product/marketing/screenshots/2026-06-10-final-synthetic/ before publishing.
+       See BidVision-Product/marketing/screenshot-shotlist.md (PRE-PUBLISH BLOCKER). -->
+  <meta name="description" content="BidVision helps flight attendants find the trips that fit their life. Ranks your bid sheet by your real preferences — all on your device.">
   <link rel="icon" href="beta/assets/icon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,92 +19,198 @@
       --cognac-dark: #6F4A2F;
       --sage: #5B7A5B;
       --surface-app: #F4F2EF;
+      --surface-alt: #EDEAE4;
+      --card: #FFFFFF;
+      --border: rgba(42, 42, 40, 0.10);
       --text-primary: #2A2A28;
       --text-secondary: #5A5855;
       --text-muted: #7A766F;
       --font-sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --shadow: 0 12px 36px rgba(42, 42, 40, 0.14);
     }
     @media (prefers-color-scheme: dark) {
       :root {
         --surface-app: #080B12;
+        --surface-alt: #0E121B;
+        --card: #151A24;
+        --border: rgba(255, 255, 255, 0.10);
         --text-primary: #F9F6F2;
         --text-secondary: #D6D1CB;
         --text-muted: #B0ACA6;
+        --shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
       }
     }
     * { box-sizing: border-box; }
-    html, body { height: 100%; margin: 0; }
+    html { scroll-behavior: smooth; }
     body {
+      margin: 0;
       font-family: var(--font-sans);
       background: var(--surface-app);
       color: var(--text-primary);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 24px;
-      text-align: center;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
-    .hero-icon { width: 72px; height: 72px; margin-bottom: 16px; }
-    .brand { font-size: 2.5rem; letter-spacing: 0.02em; margin: 0 0 8px; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    a { color: var(--cognac); }
+
+    /* Nav */
+    .nav {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--surface-app) 88%, transparent);
+      backdrop-filter: saturate(140%) blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { font-size: 1.4rem; letter-spacing: 0.02em; text-decoration: none; }
     .brand-bid { font-weight: 700; color: var(--cognac); }
     .brand-vision { font-weight: 300; letter-spacing: 0.06em; color: var(--cognac); }
-    .tagline { font-size: 1.125rem; color: var(--text-secondary); margin: 0 0 8px; }
-    .coming-soon {
-      font-size: 0.8125rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--text-muted);
-      margin: 0 0 32px;
+    .nav-links { display: flex; align-items: center; gap: 22px; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; font-weight: 500; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .btn {
+      display: inline-block; background: var(--cognac); color: #fff;
+      font-size: 0.95rem; font-weight: 600; text-decoration: none;
+      padding: 11px 20px; border-radius: 8px; min-height: 42px;
+      transition: background 150ms ease;
     }
-    .cta {
-      display: inline-block;
-      background: var(--cognac);
-      color: #fff;
-      font-size: 1rem;
-      font-weight: 600;
-      text-decoration: none;
-      padding: 14px 28px;
-      border-radius: 8px;
-      min-height: 44px;
-      transition: background 150ms cubic-bezier(0, 0, 0.2, 1);
-    }
-    .cta:hover { background: var(--cognac-dark); }
+    .btn:hover { background: var(--cognac-dark); }
+
+    /* Hero */
+    .hero { text-align: center; padding: 72px 0 48px; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.1rem); font-weight: 700; line-height: 1.12; margin: 0 auto 18px; max-width: 18ch; letter-spacing: -0.01em; }
+    .hero p { font-size: clamp(1.05rem, 2.2vw, 1.25rem); color: var(--text-secondary); max-width: 60ch; margin: 0 auto 28px; }
+    .cta-row { display: flex; gap: 14px; justify-content: center; align-items: center; flex-wrap: wrap; }
+    .cta-lg { padding: 15px 30px; font-size: 1.05rem; min-height: 50px; }
     .privacy-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(91, 122, 91, 0.1);
-      color: var(--sage);
-      font-size: 0.8125rem;
-      padding: 6px 12px;
-      border-radius: 9999px;
-      margin-top: 28px;
+      display: inline-flex; align-items: center; gap: 6px;
+      background: color-mix(in srgb, var(--sage) 14%, transparent);
+      color: var(--sage); font-size: 0.85rem; font-weight: 500;
+      padding: 6px 13px; border-radius: 9999px;
     }
     .privacy-badge svg { width: 14px; height: 14px; }
-    .footer {
-      margin-top: 40px;
-      font-size: 0.75rem;
-      line-height: 1.6;
-      color: var(--text-muted);
+    .hero-shot { margin: 48px auto 0; }
+
+    .shot { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--border); box-shadow: var(--shadow); background: var(--card); }
+
+    /* Feature rows */
+    .feature { padding: 56px 0; border-top: 1px solid var(--border); }
+    .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .feature:nth-of-type(even) .feature-media { order: -1; }
+    .feature h2 { font-size: clamp(1.5rem, 3.2vw, 2.05rem); font-weight: 600; line-height: 1.18; margin: 0 0 14px; letter-spacing: -0.01em; }
+    .feature p { font-size: 1.08rem; color: var(--text-secondary); margin: 0; max-width: 46ch; }
+    .feature-media.center { display: flex; justify-content: center; }
+
+    /* Privacy band */
+    .band { background: var(--surface-alt); text-align: center; padding: 64px 0; border-top: 1px solid var(--border); }
+    .band h2 { font-size: clamp(1.5rem, 3.2vw, 2rem); font-weight: 600; margin: 0 0 12px; }
+    .band p { color: var(--text-secondary); max-width: 56ch; margin: 0 auto 0; font-size: 1.08rem; }
+    .band .privacy-badge { margin-top: 22px; }
+
+    /* CTA band */
+    .cta-band { text-align: center; padding: 64px 0; border-top: 1px solid var(--border); }
+    .cta-band h2 { font-size: clamp(1.5rem, 3.2vw, 2rem); font-weight: 600; margin: 0 0 22px; }
+
+    /* Footer */
+    .footer { text-align: center; padding: 40px 24px; font-size: 0.8rem; line-height: 1.7; color: var(--text-muted); border-top: 1px solid var(--border); }
+
+    @media (max-width: 760px) {
+      .feature-grid { grid-template-columns: 1fr; gap: 24px; }
+      .feature:nth-of-type(even) .feature-media { order: 0; }
+      .nav-links .nav-text { display: none; }
     }
   </style>
 </head>
 <body>
-  <img src="beta/assets/icon.png" alt="BidVision" class="hero-icon">
-  <h1 class="brand">
-    <span class="brand-bid">BID</span><span class="brand-vision">VISION</span>
-  </h1>
-  <p class="tagline">Smart tools for smarter bidding.</p>
-  <p class="coming-soon">Coming soon</p>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="/"><span class="brand-bid">BID</span><span class="brand-vision">VISION</span></a>
+      <div class="nav-links">
+        <a class="nav-text" href="/start">Getting Started</a>
+        <a class="btn" href="/beta">Apply for beta test</a>
+      </div>
+    </div>
+  </nav>
 
-  <a href="/beta" class="cta">Apply for beta test</a>
+  <header class="hero wrap">
+    <h1>Find the trips that fit your life&mdash;not just the ones you're legal for.</h1>
+    <p>BidVision reads your bid sheet and ranks every trip by what <em>you</em> actually want: the days you can work, the trips you'd trade for, the patterns you avoid. It all runs on your device.</p>
+    <div class="cta-row">
+      <a class="btn cta-lg" href="/beta">Apply for beta test</a>
+      <span class="privacy-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        All data stays on your device
+      </span>
+    </div>
+    <img class="shot hero-shot" src="img/hero.png" alt="BidVision ranking a bid sheet by preference" width="1600" height="852" loading="eager">
+  </header>
 
-  <span class="privacy-badge">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-    All data stays on your device
-  </span>
+  <main>
+    <section class="feature">
+      <div class="wrap feature-grid">
+        <div class="feature-text">
+          <h2>Tell it when you can fly. Once.</h2>
+          <p>Set a weekly pattern and tweak individual dates for the month. BidVision scores every trip against your real availability&mdash;by the <em>hour</em>, not just the day&mdash;so the trips that fit your life float to the top. Your pattern persists across bids; just adjust the exceptions.</p>
+        </div>
+        <div class="feature-media">
+          <img class="shot" src="img/availability.png" alt="Availability: a weekly template plus a calendar of can-work and can't-work windows" width="1400" height="738" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section class="feature">
+      <div class="wrap feature-grid">
+        <div class="feature-text">
+          <h2>Prefer, Allow, Exclude&mdash;a spectrum, not a switch.</h2>
+          <p>On any filter, place each option where it really sits for you. <strong>Prefer</strong> is your ideal&mdash;pull these to the top. <strong>Allow</strong> is a good one&mdash;a lighter nudge up. Leave an option untouched and it stays neutral&mdash;no opinion either way. <strong>Exclude</strong> is a negative&mdash;push it down. They're <em>soft</em> by default, so nothing disappears unless you switch to Strict. It's how you'd actually rank your month, turned into a sorted list.</p>
+        </div>
+        <div class="feature-media center">
+          <img class="shot" src="img/preferences.png" alt="Prefer, Allow, and Exclude controls on a filter" width="700" height="954" loading="lazy" style="max-width: 360px;">
+        </div>
+      </div>
+    </section>
+
+    <section class="feature">
+      <div class="wrap feature-grid">
+        <div class="feature-text">
+          <h2>Explore everything, or zero in.</h2>
+          <p><strong>Discover</strong> shows all your trips ranked by preference&mdash;great for spotting trips you'd have scrolled right past. Flip to <strong>Strict</strong> when you know exactly what you want, and it hides anything that breaks your rules.</p>
+        </div>
+        <div class="feature-media center">
+          <img class="shot" src="img/discover-strict.png" alt="Discover and Strict mode toggle with a minimum-match threshold" width="610" height="95" loading="lazy" style="max-width: 460px;">
+        </div>
+      </div>
+    </section>
+
+    <section class="feature">
+      <div class="wrap feature-grid">
+        <div class="feature-text">
+          <h2>Hunting a specific trade? Filter to the dates that matter.</h2>
+          <p>Set a date range and BidVision surfaces every trip touching those days&mdash;the fast way to research ETB and TTS trades around the schedule you're trying to build.</p>
+        </div>
+        <div class="feature-media center">
+          <img class="shot" src="img/date-range.png" alt="Date Range filter set to a window for trade research" width="775" height="730" loading="lazy" style="max-width: 340px;">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Your data never leaves your device.</h2>
+      <p>No airline data is sent to or stored by BidVision servers. All parsing, filtering, and scoring happens on your device.</p>
+      <div><span class="privacy-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        On-device by design
+      </span></div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <h2>Want in on the beta?</h2>
+      <a class="btn cta-lg" href="/beta">Apply for beta test</a>
+    </div>
+  </section>
 
   <footer class="footer">
     BidVision, a product of FoxFinch Adaptations LLC.<br>
