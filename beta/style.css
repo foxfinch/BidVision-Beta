@@ -126,6 +126,14 @@ body {
   margin-bottom: 16px;
 }
 
+.hero-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin: 0 0 14px;
+}
+
 .privacy-badge {
   display: inline-flex;
   align-items: center;
@@ -633,14 +641,106 @@ body {
     max-width: 960px;
   }
 
-  .why-grid {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
   .state .card,
   .state .toggle-link {
     max-width: 640px;
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+/* === Shared top nav (site cohesion) === */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  background: color-mix(in srgb, var(--surface-app) 88%, transparent);
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.nav-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav .brand {
+  font-size: 1.4rem;
+  margin: 0;
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.nav-links a:hover {
+  color: var(--text-primary);
+}
+
+/* === Why: screenshot feature rows (matches homepage) === */
+.why-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+.why-features {
+  display: flex;
+  flex-direction: column;
+  margin: 8px 0 20px;
+}
+.why-feature {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  align-items: center;
+  padding: 28px 0;
+}
+.why-feature + .why-feature {
+  border-top: 1px solid var(--border-subtle);
+}
+.why-feature h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+.why-feature p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.why-feature-media {
+  display: flex;
+  justify-content: center;
+}
+.shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-float);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-overlay);
+  background: var(--surface-card);
+}
+@media (min-width: 900px) {
+  .why-feature {
+    grid-template-columns: 1fr 1fr;
+    gap: 44px;
+  }
+  .why-feature.flip .why-feature-media {
+    order: -1;
   }
 }

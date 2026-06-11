@@ -44,9 +44,16 @@
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      padding: 48px 24px;
       text-align: center;
     }
+    /* Shared top nav (site cohesion) */
+    .nav { position: sticky; top: 0; z-index: 10; width: 100%; background: color-mix(in srgb, var(--surface-app) 88%, transparent); backdrop-filter: saturate(140%) blur(10px); -webkit-backdrop-filter: saturate(140%) blur(10px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1080px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav .brand { font-size: 1.4rem; margin: 0; text-decoration: none; }
+    .nav-links { display: flex; align-items: center; gap: 22px; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; font-weight: 500; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .sample-main { width: 100%; display: flex; flex-direction: column; align-items: center; padding: 48px 24px; }
     .hero-icon { width: 64px; height: 64px; margin-bottom: 14px; }
     .brand { font-size: 2rem; letter-spacing: 0.02em; margin: 0 0 28px; }
     .brand-bid { font-weight: 700; color: var(--cognac); }
@@ -132,6 +139,18 @@
   </style>
 </head>
 <body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="/"><span class="brand-bid">BID</span><span class="brand-vision">VISION</span></a>
+      <div class="nav-links">
+        <a href="/start">Getting Started</a>
+        <a href="/beta/">Apply for beta</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="sample-main">
   <img src="/beta/assets/icon.png" alt="BidVision" class="hero-icon">
   <h1 class="brand">
     <span class="brand-bid">BID</span><span class="brand-vision">VISION</span>
@@ -169,5 +188,6 @@
     &copy; 2026 FoxFinch Adaptations LLC. Not affiliated with or endorsed by any airline.<br>
     <a href="/privacy/">Privacy Policy</a>
   </footer>
+  </main>
 </body>
 </html>
