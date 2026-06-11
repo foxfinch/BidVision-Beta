@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BidVision &mdash; Sample bid sheet</title>
+  <meta name="description" content="Download a realistic sample bid sheet (synthetic data) to try BidVision.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cognac: #8B5E3C;
+      --cognac-dark: #6F4A2F;
+      --sage: #5B7A5B;
+      --surface-app: #F4F2EF;
+      --surface-card: #FFFFFF;
+      --border: rgba(42, 42, 40, 0.1);
+      --text-primary: #2A2A28;
+      --text-secondary: #5A5855;
+      --text-muted: #7A766F;
+      --font-sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --surface-app: #080B12;
+        --surface-card: #11151F;
+        --border: rgba(249, 246, 242, 0.12);
+        --text-primary: #F9F6F2;
+        --text-secondary: #D6D1CB;
+        --text-muted: #B0ACA6;
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--surface-app);
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 48px 24px;
+      text-align: center;
+    }
+    .hero-icon { width: 64px; height: 64px; margin-bottom: 14px; }
+    .brand { font-size: 2rem; letter-spacing: 0.02em; margin: 0 0 28px; }
+    .brand-bid { font-weight: 700; color: var(--cognac); }
+    .brand-vision { font-weight: 300; letter-spacing: 0.06em; color: var(--cognac); }
+    .card {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 32px 28px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+    .eyebrow {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--sage);
+      font-weight: 600;
+      margin: 0 0 8px;
+    }
+    h1.title { font-size: 1.5rem; font-weight: 600; margin: 0 0 12px; }
+    .lead { font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin: 0 0 8px; }
+    .meta {
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin: 0 0 24px;
+    }
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--cognac);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      min-height: 44px;
+      transition: background 150ms cubic-bezier(0, 0, 0.2, 1);
+    }
+    .cta:hover { background: var(--cognac-dark); }
+    .cta svg { width: 18px; height: 18px; }
+    .filename { font-size: 0.75rem; color: var(--text-muted); margin: 14px 0 0; }
+    .how {
+      margin: 28px 0 0;
+      padding: 18px 20px;
+      background: var(--surface-app);
+      border-radius: 10px;
+      text-align: left;
+    }
+    .how h2 {
+      font-size: 0.8125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin: 0 0 10px;
+      font-weight: 600;
+    }
+    .how ol { margin: 0; padding-left: 20px; color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7; }
+    .privacy-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(91, 122, 91, 0.1);
+      color: var(--sage);
+      font-size: 0.8125rem;
+      padding: 6px 12px;
+      border-radius: 9999px;
+      margin-top: 24px;
+    }
+    .privacy-badge svg { width: 14px; height: 14px; }
+    .footer {
+      margin-top: 36px;
+      font-size: 0.75rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 480px;
+    }
+    .footer a { color: var(--text-secondary); }
+  </style>
+</head>
+<body>
+  <img src="/beta/assets/icon.png" alt="BidVision" class="hero-icon">
+  <h1 class="brand">
+    <span class="brand-bid">BID</span><span class="brand-vision">VISION</span>
+  </h1>
+
+  <div class="card">
+    <p class="eyebrow">Sample bid sheet</p>
+    <h1 class="title">Try BidVision with realistic data</h1>
+    <p class="lead">A sample monthly bid sheet so you can load BidVision and explore it right away &mdash; no waiting for your next bid packet.</p>
+    <p class="meta">PHL base &middot; July 2026 &middot; 30 sequences &middot; domestic + international, with layover hotels. Every detail is <strong>synthetic sample data</strong> &mdash; no real crew or schedule information.</p>
+
+    <a href="/sample/july-2026-bidsheet.pdf" class="cta" download>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download sample bid sheet
+    </a>
+    <p class="filename">july-2026-bidsheet.pdf &middot; 5 pages &middot; PDF</p>
+
+    <div class="how">
+      <h2>How to use it</h2>
+      <ol>
+        <li>Download the PDF above.</li>
+        <li>Open BidVision and choose <strong>Load PDF</strong>.</li>
+        <li>Pick this file &mdash; BidVision parses it instantly, all on your device.</li>
+      </ol>
+    </div>
+
+    <span class="privacy-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      All data stays on your device
+    </span>
+  </div>
+
+  <footer class="footer">
+    BidVision, a product of FoxFinch Adaptations LLC.<br>
+    &copy; 2026 FoxFinch Adaptations LLC. Not affiliated with or endorsed by any airline.
+  </footer>
+</body>
+</html>
