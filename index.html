@@ -75,6 +75,9 @@
       transition: background 150ms ease;
     }
     .btn:hover { background: var(--cognac-dark); }
+    /* .nav-links a (class+element) outranks .btn (class) and was tinting the nav button's
+       text gray on cognac — keep nav button text white at rest and on hover. */
+    .nav-links a.btn, .nav-links a.btn:hover { color: #fff; }
 
     /* Hero */
     .hero { text-align: center; padding: 72px 0 48px; }

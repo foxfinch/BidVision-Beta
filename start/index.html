@@ -53,6 +53,8 @@
     .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; font-weight: 500; }
     .nav-links a:hover { color: var(--text-primary); }
     .btn { display: inline-block; background: var(--cognac); color: #fff; font-size: 0.95rem; font-weight: 600; text-decoration: none; padding: 11px 20px; border-radius: 8px; transition: background 150ms ease; }
+    /* .nav-links a (class+element) outranks .btn (class) — keep the nav button text white, not gray-on-cognac. */
+    .nav-links a.btn, .nav-links a.btn:hover { color: #fff; }
     .btn:hover { background: var(--cognac-dark); }
 
     .doc { max-width: 760px; margin: 0 auto; padding: 56px 24px 24px; }
