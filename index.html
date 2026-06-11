@@ -80,6 +80,8 @@
     .hero p { font-size: clamp(1.05rem, 2.2vw, 1.25rem); color: var(--text-secondary); max-width: 60ch; margin: 0 auto 28px; }
     .cta-row { display: flex; gap: 14px; justify-content: center; align-items: center; flex-wrap: wrap; }
     .cta-lg { padding: 15px 30px; font-size: 1.05rem; min-height: 50px; }
+    .cta-secondary { color: var(--cognac); font-weight: 600; text-decoration: none; font-size: 1rem; white-space: nowrap; }
+    .cta-secondary:hover { text-decoration: underline; }
     .privacy-badge {
       display: inline-flex; align-items: center; gap: 6px;
       background: color-mix(in srgb, var(--sage) 14%, transparent);
@@ -135,6 +137,7 @@
     <p>BidVision reads your bid sheet and ranks every trip by what <em>you</em> actually want: the days you can work, the trips you'd trade for, the patterns you avoid. It all runs on your device.</p>
     <div class="cta-row">
       <a class="btn cta-lg" href="/beta">Apply for beta test</a>
+      <a class="cta-secondary" href="/start">See how it works &rarr;</a>
       <span class="privacy-badge">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         All data stays on your device
@@ -171,8 +174,20 @@
     <section class="feature">
       <div class="wrap feature-grid">
         <div class="feature-text">
-          <h2>Explore everything, or zero in.</h2>
-          <p><strong>Discover</strong> shows all your trips ranked by preference&mdash;great for spotting trips you'd have scrolled right past. Flip to <strong>Strict</strong> when you know exactly what you want, and it hides anything that breaks your rules.</p>
+          <h2>Tell it which preferences matter most.</h2>
+          <p>Set a lot of preferences and some naturally count for more. Drag your filters into a priority order and BidVision weights the ranking to match&mdash;your must-haves move trips further than your nice-to-haves. It's not another filter; it's how BidVision breaks ties when trips compete for the top.</p>
+        </div>
+        <div class="feature-media center">
+          <img class="shot" src="img/filter-ranking.png" alt="Filter Ranking: active filters dragged into priority order" width="520" height="472" loading="lazy" style="max-width: 340px;">
+        </div>
+      </div>
+    </section>
+
+    <section class="feature">
+      <div class="wrap feature-grid">
+        <div class="feature-text">
+          <h2>See the trips you'd otherwise miss.</h2>
+          <p>Most tools only show you exact matches&mdash;so a great trip that's a hair outside your filters never even appears. BidVision's preferences are <em>soft</em>: in <strong>Discover</strong>, near-matches still show up, ranked, so you catch the ones you'd have scrolled right past. Know exactly what you want? Flip to <strong>Strict</strong> and it hides anything that breaks your rules.</p>
         </div>
         <div class="feature-media center">
           <img class="shot" src="img/discover-strict.png" alt="Discover and Strict mode toggle with a minimum-match threshold" width="880" height="146" loading="lazy" style="max-width: 460px;">
@@ -212,6 +227,7 @@
   </section>
 
   <footer class="footer">
+    <a href="/start">Getting Started</a> &middot; <a href="/beta">Apply for beta test</a><br><br>
     BidVision, a product of FoxFinch Adaptations LLC.<br>
     &copy; 2026 FoxFinch Adaptations LLC. Not affiliated with or endorsed by any airline.
   </footer>
