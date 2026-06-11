@@ -15,16 +15,17 @@ const VALID_CODE_HASHES = new Set([
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbyjy2oY1J3wHCe1TUKbeEmWIgA7GXzkwb4R3J0TPVNG5Hmt3W8ElmlQcmN2kaW_xImoOg/exec';
 
 // Download URLs (update per release)
-// b7 — DEV: confirm the exact artifact filenames and that the v0.2.0-b7 GitHub
-// release is published before this branch goes live. Links 404 until then.
-// SCAFFOLD: 'android' .apk filename is a placeholder — confirm on b7 upload.
-// iOS has NO download URL — it's invite-only via TestFlight (email path in the UI).
+// LAUNCH = v0.2.0-b8 on foxfinch/BidVision-Beta. At publish, fill mac/linux/android
+// with the EXACT asset names off the release (no guessing). Linux now ships amd64 + arm64.
+// WINDOWS: intentionally points to the PREVIOUS release (v0.2.0-b6) as a temporary
+// fallback — b8 Windows build wasn't ready at launch; swap to b8 when it compiles.
+// Verified live 2026-06-11. iOS has NO URL — invite-only via TestFlight (email path in UI).
 const DOWNLOADS = {
-  'mac-arm':  'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b7/BidVision-macOS-Apple-Silicon.zip',
-  'mac-intel': 'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b7/BidVision-macOS-Intel.zip',
-  'windows':  'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b7/BidVision-0.2.0-b7.Setup.exe',
-  'linux':    'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b7/BidVision-0.2.0-b7-amd64.deb',
-  'android':  'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b7/BidVision-0.2.0-b7.apk',
+  'mac-arm':  'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b7/BidVision-macOS-Apple-Silicon.zip', // TODO b8: wire real name at publish
+  'mac-intel': 'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b7/BidVision-macOS-Intel.zip', // TODO b8: wire real name at publish
+  'windows':  'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b6/BidVision-0.2.0-b6.Setup.exe', // TEMP fallback: previous (b6) build, verified live
+  'linux':    'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b7/BidVision-0.2.0-b7-amd64.deb', // TODO b8: wire real name at publish
+  'android':  'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b7/BidVision-0.2.0-b7.apk', // TODO b8: wire real name at publish
 };
 
 // === State management ===
