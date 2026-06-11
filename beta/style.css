@@ -397,24 +397,46 @@ body {
 .collapsible-toggle {
   display: flex;
   align-items: center;
-  gap: 8px;
-  background: none;
-  border: none;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  background: rgba(139, 94, 60, 0.06);
+  border: 1px solid var(--action-primary);
+  border-radius: var(--radius-touch);
   font-family: var(--font-sans);
-  font-size: 0.875rem;
-  font-weight: 500;
   color: var(--action-primary);
   cursor: pointer;
-  padding: 4px 0;
+  padding: 16px 18px;
+  transition: background var(--duration-fast) var(--ease-out);
 }
 
 .collapsible-toggle:hover {
-  text-decoration: underline;
+  background: rgba(139, 94, 60, 0.1);
+}
+
+.install-toggle-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.install-toggle-title {
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.install-toggle-sub {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.5;
 }
 
 .collapsible-toggle .arrow {
+  flex-shrink: 0;
   transition: transform var(--duration-fast) var(--ease-out);
-  font-size: 0.75rem;
+  font-size: 0.85rem;
 }
 
 .collapsible-toggle.open .arrow {
