@@ -168,6 +168,15 @@ function initCollapsible() {
       macContent.classList.toggle('open');
     });
   }
+
+  // Linux help (amd64 vs arm64)
+  const linuxToggle = document.getElementById('linux-help-toggle');
+  const linuxContent = document.getElementById('linux-help-content');
+  if (linuxToggle && linuxContent) {
+    linuxToggle.addEventListener('click', () => {
+      linuxContent.classList.toggle('open');
+    });
+  }
 }
 
 // === Form handlers ===
