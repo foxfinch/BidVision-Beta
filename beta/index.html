@@ -11,6 +11,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Mobile-reveal scaffolding (b7) */
+    .platform-note { margin: 0 0 18px; padding: 14px 16px; background: rgba(91,122,91,0.08); border: 1px solid rgba(91,122,91,0.25); border-radius: 8px; font-size: 0.8125rem; line-height: 1.6; color: var(--text-secondary); }
+    .platform-note strong { color: var(--text-primary); }
+    .dl-section-head { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-weight: 600; margin: 22px 0 10px; }
+    .mobile-hint { margin: 0 0 12px; font-size: 0.8125rem; font-weight: 600; color: #8B5E3C; }
+    .mobile-platform { margin-bottom: 12px; }
+    .mobile-platform-name { font-size: 0.9375rem; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; }
+    .ios-invite { padding: 14px 16px; background: rgba(139,94,60,0.06); border: 1px solid rgba(139,94,60,0.22); border-radius: 8px; font-size: 0.8125rem; line-height: 1.6; }
+    .ios-invite p { margin: 0 0 8px; color: var(--text-secondary); }
+    .ios-invite p:last-child { margin-bottom: 0; }
+    .ios-invite-note { color: var(--text-muted) !important; }
+  </style>
 </head>
 <body>
 
@@ -112,6 +125,14 @@
                 <input type="radio" name="platform" id="plat-linux" value="Linux / ChromeOS">
                 <label for="plat-linux">Linux / Chromebook</label>
               </div>
+              <div class="radio-option">
+                <input type="radio" name="platform" id="plat-ios" value="iPhone / iPad">
+                <label for="plat-ios">iPhone / iPad</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" name="platform" id="plat-android" value="Android">
+                <label for="plat-android">Android</label>
+              </div>
             </div>
             <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 8px;">
               <strong>Not sure which Mac?</strong> &#63743; menu &rarr; About This Mac. M1/M2/M3/M4 = Apple Silicon. Anything else = Intel.
@@ -191,11 +212,13 @@
     <div id="state-downloads" class="state">
       <div class="card">
         <h2 class="card-title">You're in.</h2>
-        <p class="card-subtitle">Download BidVision for your platform.</p>
+        <p class="card-subtitle">Pick the device you'll run BidVision on.</p>
 
-        <div class="mobile-notice" id="mobile-notice">
-          BidVision is a desktop app &mdash; open this page on your computer to download.
+        <div class="platform-note">
+          <strong>Best on desktop and tablet</strong> &mdash; that's where there's room for your whole ranked list at a glance. It runs on your phone too, but that's where we most want your read: it's new, and we're deciding how far to take it. If you try it on a phone, tell us &mdash; is it worth having, and what's essential to see on a small screen?
         </div>
+
+        <h3 class="dl-section-head">On your computer</h3>
 
         <div class="downloads" id="download-buttons">
           <a href="#" class="download-btn" id="dl-mac-arm" data-platform="mac-arm">
@@ -246,6 +269,29 @@
             <p style="color: var(--text-muted);">Most Macs from 2020 onward are Apple Silicon. If yours is older than that, it's almost certainly Intel.</p>
           </div>
         </div>
+
+        <h3 class="dl-section-head">On your phone or tablet</h3>
+        <p class="mobile-hint" id="mobile-hint" style="display:none;">You're on a phone or tablet &mdash; here's how to install.</p>
+
+        <!-- iPhone / iPad — TestFlight (invite-only; email-to-add while Apple beta review is pending) -->
+        <div class="mobile-platform">
+          <div class="mobile-platform-name">&#63743; iPhone &amp; iPad</div>
+          <div class="ios-invite">
+            <p><strong>Want BidVision on iOS?</strong> Email <a href="mailto:support@bidvision.app?subject=BidVision%20iOS%20beta&amp;body=Hi%2C%20I%27d%20like%20the%20BidVision%20iOS%20beta.%20The%20email%20that%20is%20my%20Apple%20ID%20is%3A%20">support@bidvision.app</a> with the email address that's your <strong>Apple&nbsp;ID</strong>, and we'll add you to TestFlight and send your invite.</p>
+            <p class="ios-invite-note">iOS runs through Apple's free <strong>TestFlight</strong> app. While we finish Apple's beta review, we add testers by hand &mdash; so your invite may take a day. Full step-by-step is in the install guide below. <!-- SCAFFOLD: once Apple Beta App Review clears, swap this email step for a one-tap public TestFlight link. --></p>
+          </div>
+        </div>
+
+        <!-- Android — sideload APK (link 404s until the v0.2.0-b7 release is published) -->
+        <div class="mobile-platform">
+          <a href="#" class="download-btn" id="dl-android" data-platform="android">
+            <span class="platform-icon">&#129302;</span>
+            <span class="platform-info">
+              <span class="platform-name">Android phone &amp; tablet</span>
+              <span class="platform-detail">Installs from a file (.apk) &mdash; not on the Play Store during beta</span>
+            </span>
+          </a>
+        </div>
       </div>
 
       <!-- Install instructions -->
@@ -275,6 +321,24 @@
               <li><strong>Chromebook only:</strong> turn on Linux first &mdash; <strong>Settings &rarr; About ChromeOS &rarr; Developers &rarr; Linux development environment &rarr; Set up</strong>. (One-time; takes a couple of minutes.)</li>
               <li>Double-click the downloaded <strong>.deb</strong> file to install it &mdash; or in a terminal run <code>sudo dpkg -i BidVision*.deb</code></li>
               <li>Launch BidVision from your app launcher</li>
+            </ol>
+
+            <h4>iPhone &amp; iPad (TestFlight)</h4>
+            <ol>
+              <li>Email us the address that's your <strong>Apple&nbsp;ID</strong> (see &ldquo;On your phone or tablet&rdquo; above), and wait for the invite email.</li>
+              <li>On your iPhone or iPad, install the free <strong>TestFlight</strong> app from the App Store.</li>
+              <li>Open our invite email <em>on that device</em> and tap <strong>Start Testing</strong> (or <strong>View in TestFlight</strong>).</li>
+              <li>In TestFlight, tap <strong>Accept</strong>, then <strong>Install</strong>.</li>
+              <li>Open BidVision from your home screen. New versions arrive through TestFlight &mdash; tap <strong>Update</strong> when prompted.</li>
+            </ol>
+
+            <h4>Android</h4>
+            <ol>
+              <li>Tap <strong>Android phone &amp; tablet</strong> above to download the <code>.apk</code> file.</li>
+              <li>Open the downloaded file &mdash; from the download notification, or your <strong>Files / Downloads</strong> app.</li>
+              <li>Android will ask about installing from this source &mdash; tap <strong>Settings</strong>, turn on <strong>Allow from this source</strong>, then go back.</li>
+              <li>Tap <strong>Install</strong>, then <strong>Open</strong>.</li>
+              <li>To update later, download the new <code>.apk</code> and install it over the top.</li>
             </ol>
           </div>
         </div>

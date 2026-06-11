@@ -17,11 +17,14 @@ const GAS_URL = 'https://script.google.com/macros/s/AKfycbyjy2oY1J3wHCe1TUKbeEmW
 // Download URLs (update per release)
 // b7 — DEV: confirm the exact artifact filenames and that the v0.2.0-b7 GitHub
 // release is published before this branch goes live. Links 404 until then.
+// SCAFFOLD: 'android' .apk filename is a placeholder — confirm on b7 upload.
+// iOS has NO download URL — it's invite-only via TestFlight (email path in the UI).
 const DOWNLOADS = {
   'mac-arm':  'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b7/BidVision-macOS-Apple-Silicon.zip',
   'mac-intel': 'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b7/BidVision-macOS-Intel.zip',
   'windows':  'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b7/BidVision-0.2.0-b7.Setup.exe',
   'linux':    'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b7/BidVision-0.2.0-b7-amd64.deb',
+  'android':  'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b7/BidVision-0.2.0-b7.apk',
 };
 
 // === State management ===
@@ -275,14 +278,13 @@ function initCodeForms() {
 }
 
 function showMobileNotice() {
+  // Mobile users are no longer trapped — BidVision now has iOS (TestFlight) and
+  // Android (.apk) paths. On a phone/tablet, surface the hint that points at the
+  // "On your phone or tablet" section; leave the desktop builds visible too
+  // (many testers are on a computer and a tablet/phone is their second device).
   if (isMobile()) {
-    const notice = document.getElementById('mobile-notice');
-    if (notice) notice.classList.add('show');
-    // Hide download buttons on mobile — no desktop app to download
-    const downloads = document.getElementById('download-buttons');
-    if (downloads) downloads.style.display = 'none';
-    const macHelp = document.querySelector('.mac-help');
-    if (macHelp) macHelp.style.display = 'none';
+    const hint = document.getElementById('mobile-hint');
+    if (hint) hint.style.display = '';
   }
 }
 
