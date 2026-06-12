@@ -29,14 +29,13 @@ const GAS_URL = 'https://script.google.com/macros/s/AKfycbyjy2oY1J3wHCe1TUKbeEmW
 
 // Download URLs — LAUNCH = v0.2.0-b8 on foxfinch/BidVision-Beta (published 2026-06-11).
 // Names read off the published release (no guessing). Linux ships amd64 + arm64.
-// WINDOWS: intentionally points to the PREVIOUS release (v0.2.0-b6) as a temporary
-// fallback — the b8 Windows build wasn't ready at launch; swap to b8 when it compiles.
+// All platforms now on b8 (Windows installer uploaded 2026-06-12; was a b6 fallback at launch).
 // iOS has NO URL — invite-only via TestFlight (email path in the UI).
 const B8 = 'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b8';
 const DOWNLOADS = {
   'mac-arm':      `${B8}/BidVision-macOS-Apple-Silicon-0.2.0-b8.zip`,
   'mac-intel':    `${B8}/BidVision-macOS-Intel-0.2.0-b8.zip`,
-  'windows':      'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b6/BidVision-0.2.0-b6.Setup.exe', // TEMP b6 fallback
+  'windows':      `${B8}/BidVision-Windows-0.2.0-b8.exe`,
   'linux':        `${B8}/BidVision-Linux-amd64-0.2.0-b8.deb`,
   'linux-arm64':  `${B8}/BidVision-Linux-arm64-0.2.0-b8.deb`,
   'android':      `${B8}/BidVision-Android-0.2.0-b8.apk`,
