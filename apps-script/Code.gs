@@ -50,6 +50,8 @@ function doPost(e) {
         return handleRedemption(data);
       case 'code_entry':
         return handleCodeEntry(data);
+      case 'download':
+        return handleDownload(data);
       default:
         return respond({ success: false, error: 'Unknown action' });
     }
@@ -103,6 +105,24 @@ function handleRedemption(data) {
   if (data.email && data.code) {
     updateCodeUsed(data.email, data.code);
   }
+  return respond({ success: true });
+}
+
+// Logs a download-button click: who (email) downloaded what (platform + version) when.
+// Deliberately minimal — no IP, no user-agent, no fingerprint. Auto-creates the tab.
+function handleDownload(data) {
+  const ss = SpreadsheetApp.openById(CONFIG.SHEET_ID);
+  let sheet = ss.getSheetByName('Downloads');
+  if (!sheet) {
+    sheet = ss.insertSheet('Downloads');
+    sheet.appendRow(['Timestamp', 'Email', 'Platform', 'Version']);
+  }
+  sheet.appendRow([
+    new Date().toISOString(),
+    data.email || '(unknown)',
+    data.platform || '',
+    data.version || '',
+  ]);
   return respond({ success: true });
 }
 

@@ -91,6 +91,7 @@ function submitToGAS(data) {
     fetch(GAS_URL, {
       method: 'POST',
       mode: 'no-cors',
+      keepalive: true,  // survive a navigation/unload (e.g. download click)
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify(data),
     }).catch(err => console.error('GAS submission error:', err));
@@ -318,6 +319,26 @@ function showMobileNotice() {
   }
 }
 
+// === Download attribution (fire-and-forget; email already in localStorage) ===
+// Logs who downloaded what/when to the Beta Tracker. Reads the asset version from
+// the button's href so per-platform differences (e.g. Windows on a fallback build)
+// are captured accurately. iOS has no .download-btn (it's an email invite), so it's
+// naturally excluded.
+function initDownloadTracking() {
+  document.querySelectorAll('.download-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const platform = btn.dataset.platform || (btn.id || '').replace(/^dl-/, '');
+      const verMatch = (btn.href || '').match(/(\d+\.\d+\.\d+-b\d+)/);
+      submitToGAS({
+        action: 'download',
+        email: localStorage.getItem('bidvision_email') || '',
+        platform: platform,
+        version: verMatch ? verMatch[1] : '',
+      });
+    });
+  });
+}
+
 // === Toggle between register and code entry ===
 function initToggles() {
   const showCode = document.getElementById('show-code-entry');
@@ -341,6 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initToggles();
   initCollapsible();
   setDownloadLinks();
+  initDownloadTracking();
 
   // Show SmartScreen warning for Windows users on downloads page
   const platform = detectPlatform();
