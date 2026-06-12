@@ -103,12 +103,12 @@
                 <label for="plat-linux">Linux / Chromebook</label>
               </div>
               <div class="radio-option">
-                <input type="radio" name="platform" id="plat-ios" value="iPhone / iPad">
-                <label for="plat-ios">iPhone / iPad</label>
-              </div>
-              <div class="radio-option">
                 <input type="radio" name="platform" id="plat-android" value="Android">
                 <label for="plat-android">Android</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" name="platform" id="plat-ios" value="iPhone / iPad">
+                <label for="plat-ios">iPhone / iPad</label>
               </div>
             </div>
             <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 8px;">
@@ -272,16 +272,8 @@
         <h3 class="dl-section-head">On your phone or tablet</h3>
         <p class="mobile-hint" id="mobile-hint" style="display:none;">You're on a phone or tablet &mdash; here's how to install.</p>
 
-        <!-- iPhone / iPad — TestFlight (invite-only; email-to-add while Apple beta review is pending) -->
-        <div class="mobile-platform">
-          <div class="mobile-platform-name">&#63743; iPhone &amp; iPad</div>
-          <div class="ios-invite">
-            <p><strong>Want BidVision on iOS?</strong> Email <a href="mailto:support@bidvision.app?subject=BidVision%20iOS%20beta&amp;body=Hi%2C%20I%27d%20like%20the%20BidVision%20iOS%20beta.%20The%20email%20that%20is%20my%20Apple%20ID%20is%3A%20">support@bidvision.app</a> with the email address that's your <strong>Apple&nbsp;ID</strong>, and we'll add you to TestFlight and send your invite.</p>
-            <p class="ios-invite-note">iOS runs through Apple's free <strong>TestFlight</strong> app. While we finish Apple's beta review, we add testers by hand &mdash; so your invite may take a day. Full step-by-step is in the install guide below. <!-- SCAFFOLD: once Apple Beta App Review clears, swap this email step for a one-tap public TestFlight link. --></p>
-          </div>
-        </div>
-
-        <!-- Android — sideload APK (link 404s until the v0.2.0-b7 release is published) -->
+        <!-- Android — sideload APK (b8 published; direct download). Listed first: iOS is
+             invite-only until Apple beta review clears + external testers are allowed. -->
         <div class="mobile-platform">
           <a href="#" class="download-btn" id="dl-android" data-platform="android">
             <span class="platform-icon">&#129302;</span>
@@ -290,6 +282,15 @@
               <span class="platform-detail">Installs from a file (.apk) &mdash; not on the Play Store during beta</span>
             </span>
           </a>
+        </div>
+
+        <!-- iPhone / iPad — TestFlight (invite-only; email-to-add while Apple beta review is pending) -->
+        <div class="mobile-platform">
+          <div class="mobile-platform-name">&#63743; iPhone &amp; iPad</div>
+          <div class="ios-invite">
+            <p><strong>Want BidVision on iOS?</strong> Email <a href="mailto:support@bidvision.app?subject=BidVision%20iOS%20beta&amp;body=Hi%2C%20I%27d%20like%20the%20BidVision%20iOS%20beta.%20The%20email%20that%20is%20my%20Apple%20ID%20is%3A%20">support@bidvision.app</a> with the email address that's your <strong>Apple&nbsp;ID</strong>, and we'll add you to TestFlight and send your invite.</p>
+            <p class="ios-invite-note">iOS runs through Apple's free <strong>TestFlight</strong> app. While we finish Apple's beta review, we add testers by hand &mdash; so your invite may take a day. Full step-by-step is in the install guide below. <!-- SCAFFOLD: once Apple Beta App Review clears, swap this email step for a one-tap public TestFlight link. --></p>
+          </div>
         </div>
       </div>
 
@@ -360,7 +361,7 @@
       </div>
 
       <p class="version-info">
-        <span id="version-display">v0.2.0-beta.7</span> &middot; Bookmark this page &mdash; updates will appear here.
+        Bookmark this page &mdash; updates will appear here.
       </p>
     </div>
 
