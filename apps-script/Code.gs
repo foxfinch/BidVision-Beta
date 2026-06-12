@@ -13,13 +13,29 @@
 
 const CONFIG = {
   SHEET_ID: '1nfBx1L0yo4j20qjsfcP4mnaveSe0oQt5uz-78egYqNI',  // Beta Tracker (jameson@foxfinch.co)
-  BETA_CODE: 'BID-0726',           // Code emailed to NEW signups (format BID-MMYY = bid month/year)
-  VALID_CODES: ['BID-0426', 'BID-0726'],  // All codes stay valid (shared-code tracking); add new months here
+  // Beta codes auto-roll by month: BID-MMYY for the current "bid month".
+  // EMIT_OFFSET = 1 → next calendar month (e.g. emits BID-0726 during June).
+  // Set EMIT_OFFSET = 0 to emit the current calendar month instead. See currentBetaCode().
+  EMIT_OFFSET: 1,
+  GRANDFATHERED_CODES: ['BID-0426', 'BID-0726'],  // older codes that stay valid forever
   AUTO_APPROVE_LIMIT: 10,
   OWNER_EMAIL: 'hello@bidvision.app',
   LANDING_PAGE_URL: 'https://bidvision.app/beta',
   FORM_URL: 'https://docs.google.com/forms/d/e/1FAIpQLSdBkgz7FIurBAd6s-l1DTJyvy3z2lsgqbXn7fsNNdzw9eWoYQ/viewform',
 };
+
+// BID-MMYY for `offsetMonths` from `date` (0 = this calendar month, 1 = next).
+function bidCodeFor(date, offsetMonths) {
+  const d = new Date(date.getFullYear(), date.getMonth() + offsetMonths, 1);
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const yy = String(d.getFullYear()).slice(-2);
+  return 'BID-' + mm + yy;
+}
+
+// The code emailed to new signups, computed fresh each send (no monthly redeploy).
+function currentBetaCode() {
+  return bidCodeFor(new Date(), CONFIG.EMIT_OFFSET);
+}
 
 function doPost(e) {
   try {
@@ -137,6 +153,7 @@ function updateCodeUsed(email, code) {
 }
 
 function sendWelcomeEmail(name, email) {
+  const code = currentBetaCode();
   const subject = 'Your BidVision Beta Access';
   const htmlBody = `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 520px; margin: 0 auto; color: #2A2A28;">
@@ -152,7 +169,7 @@ function sendWelcomeEmail(name, email) {
 
       <div style="text-align: center; margin: 24px 0;">
         <div style="display: inline-block; background: #F4F2EF; border: 2px solid #8B5E3C; border-radius: 8px; padding: 16px 32px; font-size: 24px; font-weight: 700; letter-spacing: 0.08em; color: #8B5E3C;">
-          ${CONFIG.BETA_CODE}
+          ${code}
         </div>
       </div>
 
@@ -160,7 +177,7 @@ function sendWelcomeEmail(name, email) {
       <ol style="line-height: 1.8;">
         <li>Go to <a href="${CONFIG.LANDING_PAGE_URL}" style="color: #8B5E3C;">${CONFIG.LANDING_PAGE_URL}</a></li>
         <li>Enter your access code</li>
-        <li>Download the build for your computer</li>
+        <li>Download the build for your device</li>
         <li>Follow the install instructions on the page</li>
       </ol>
 
@@ -181,7 +198,7 @@ function sendWelcomeEmail(name, email) {
       </ul>
 
       <p style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #EDE8DE; font-size: 13px; color: #7A766F;">
-        BidVision is a desktop app — download it on your computer, not your phone.<br>
+        BidVision runs on Mac, Windows, Linux, iPhone, iPad, and Android — it's best on a desktop or tablet, but use whatever you've got.<br>
         No airline data is sent to or stored by BidVision servers. Everything stays on your device.
       </p>
     </div>

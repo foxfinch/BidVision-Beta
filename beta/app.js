@@ -4,12 +4,25 @@
  */
 
 // === Configuration ===
-// SHA-256 hashes of valid beta codes (add new months here)
+// Beta codes auto-roll by month: BID-MMYY. validateCode() accepts the current
+// "bid month" plus a small window (see bidCodeFor / CODE_ACCEPT_OFFSETS), so there's
+// no monthly redeploy. These older codes also stay valid forever, kept as SHA-256
+// hashes so they don't appear in source:
 const VALID_CODE_HASHES = new Set([
-  '64a8f99b4b1114f67be79ed768041dc017dff6f3ee56e3e3d8c09e6e49eb8ce4', // BID-0426 (April 2026) — kept valid
+  '64a8f99b4b1114f67be79ed768041dc017dff6f3ee56e3e3d8c09e6e49eb8ce4', // BID-0426 (April 2026)
   '50ff672a154bb5466306149b200530576c2ffabef4a7c93884c447e94e9ed112', // BID-0726 (July 2026 bids)
-  // All codes stay valid (shared codes tracked, not invalidated). Add future months below:
 ]);
+
+// Auto-rolling monthly window. bidCodeFor(now, 1) = next calendar month (the bid
+// month). Accept previous month through +2 months so codes a month stale or early
+// still unlock. Mirrors currentBetaCode() in apps-script/Code.gs.
+const CODE_ACCEPT_OFFSETS = [-1, 0, 1, 2];
+function bidCodeFor(date, offsetMonths) {
+  const d = new Date(date.getFullYear(), date.getMonth() + offsetMonths, 1);
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const yy = String(d.getFullYear()).slice(-2);
+  return 'BID-' + mm + yy;
+}
 
 // Apps Script web app URL (set after deployment)
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbyjy2oY1J3wHCe1TUKbeEmWIgA7GXzkwb4R3J0TPVNG5Hmt3W8ElmlQcmN2kaW_xImoOg/exec';
@@ -54,8 +67,14 @@ async function sha256(text) {
 
 async function validateCode(input) {
   const normalized = input.trim().toUpperCase();
+  // 1) Grandfathered codes (hashed)
   const hash = await sha256(normalized);
   if (VALID_CODE_HASHES.has(hash)) {
+    return { valid: true, code: normalized };
+  }
+  // 2) Auto-rolling monthly window
+  const now = new Date();
+  if (CODE_ACCEPT_OFFSETS.some(k => bidCodeFor(now, k) === normalized)) {
     return { valid: true, code: normalized };
   }
   return { valid: false, code: null };
