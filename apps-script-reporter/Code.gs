@@ -9,6 +9,13 @@
  *
  * One-time setup: open this project, Run → createDailyTrigger (authorize when asked).
  * That installs a daily trigger AND writes the first snapshot immediately.
+ *
+ * GitHub auth: Apps Script runs from a SHARED Google egress IP, so GitHub's
+ * unauthenticated limit (60/hr, pooled across all Apps Script projects on that IP)
+ * is unreliable. Add a read-only GitHub token to make calls authenticated (5000/hr,
+ * own quota): Project Settings → Script Properties → add  GH_TOKEN = <token>.
+ * A fine-grained PAT scoped to foxfinch/BidVision-Beta with Contents:Read is plenty;
+ * even a no-scope token lifts you to the authenticated limit. Optional but recommended.
  */
 
 const REPORTER = {
@@ -19,16 +26,25 @@ const REPORTER = {
   HOUR: 7,  // ~7am ET
 };
 
+// Builds request headers, adding GitHub auth if a GH_TOKEN script property is set.
+function ghHeaders_() {
+  const headers = { 'Accept': 'application/vnd.github+json', 'User-Agent': 'BidVision-Beta-Tracker' };
+  const token = PropertiesService.getScriptProperties().getProperty('GH_TOKEN');
+  if (token) headers['Authorization'] = 'Bearer ' + token.trim();
+  return headers;
+}
+
 // Appends one row per (release asset) with its cumulative download_count, stamped
 // with today's date. Diff consecutive days to see per-asset deltas (actual grabs).
+// Returns the number of rows written (-1 on API error) so callers can log honestly.
 function snapshotDownloadCounts() {
   const resp = UrlFetchApp.fetch(REPORTER.RELEASES_API, {
     muteHttpExceptions: true,
-    headers: { 'Accept': 'application/vnd.github+json', 'User-Agent': 'BidVision-Beta-Tracker' },
+    headers: ghHeaders_(),
   });
   if (resp.getResponseCode() !== 200) {
     Logger.log('GitHub API ' + resp.getResponseCode() + ': ' + resp.getContentText().slice(0, 200));
-    return;
+    return -1;
   }
   const releases = JSON.parse(resp.getContentText());
 
@@ -51,6 +67,7 @@ function snapshotDownloadCounts() {
     sheet.getRange(sheet.getLastRow() + 1, 1, rows.length, 4).setValues(rows);
   }
   Logger.log('Snapshot: wrote ' + rows.length + ' rows for ' + today);
+  return rows.length;
 }
 
 // Idempotent: clears any existing trigger for this function, installs a fresh daily
@@ -64,6 +81,7 @@ function createDailyTrigger() {
     .everyDays(1)
     .atHour(REPORTER.HOUR)
     .create();
-  snapshotDownloadCounts();
-  Logger.log('Daily trigger installed (~' + REPORTER.HOUR + ':00 ' + REPORTER.TZ + ') + first snapshot written.');
+  const n = snapshotDownloadCounts();
+  Logger.log('Daily trigger installed (~' + REPORTER.HOUR + ':00 ' + REPORTER.TZ + '). First snapshot: '
+    + (n < 0 ? 'FAILED (GitHub API error — see log above; add GH_TOKEN script property)' : n + ' rows written') + '.');
 }
