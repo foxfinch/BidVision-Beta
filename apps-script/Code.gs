@@ -203,10 +203,12 @@ function sendWelcomeEmail(name, email) {
 
       <p><strong>What to try:</strong></p>
       <ul style="line-height: 1.8;">
-        <li>Upload your actual bid sheet PDF</li>
-        <li>Try the filters — narrow down trips by what matters to you</li>
-        <li>Break things! That's what beta is for</li>
+        <li>Load your bid sheet PDF (or the sample, if you don't have one yet)</li>
+        <li>Set your availability, then rank a filter with Prefer, Allow, or Exclude</li>
+        <li>Switch between Discover and Strict and watch the trip list change</li>
+        <li>Break things. That's what beta is for.</li>
       </ul>
+      <p style="line-height: 1.8;">Full five-minute checklist: <a href="https://bidvision.app/testing/" style="color: #8B5E3C;">bidvision.app/testing</a></p>
 
       <p><strong>Need your bid sheet?</strong></p>
       <p style="line-height: 1.8;">Log into the <a href="https://faportal.aa.com" style="color: #8B5E3C;">FA Portal</a>, then go to <strong>Bidding Resources &rarr; Crew Planning &rarr; Current Bid Sheets</strong>. Pick your base and save the PDF.</p>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beta testing checklist &mdash; BidVision</title>
+  <meta name="description" content="A quick spin to put BidVision through its paces, and how to tell us what you find.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cognac: #8B5E3C; --cognac-dark: #6F4A2F; --sage: #5B7A5B;
+      --surface-app: #F4F2EF; --surface-alt: #EDEAE4; --card: #FFFFFF;
+      --border: rgba(42, 42, 40, 0.10); --text-primary: #2A2A28;
+      --text-secondary: #5A5855; --text-muted: #7A766F;
+      --font-sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --shadow: 0 12px 36px rgba(42, 42, 40, 0.14);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --surface-app: #080B12; --surface-alt: #0E121B; --card: #151A24;
+        --border: rgba(255, 255, 255, 0.10); --text-primary: #F9F6F2;
+        --text-secondary: #D6D1CB; --text-muted: #B0ACA6;
+        --shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: var(--font-sans); background: var(--surface-app); color: var(--text-primary); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { color: var(--cognac); }
+    .nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--surface-app) 88%, transparent); backdrop-filter: saturate(140%) blur(10px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1080px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { font-size: 1.4rem; letter-spacing: 0.02em; text-decoration: none; }
+    .brand-bid { font-weight: 700; color: var(--cognac); }
+    .brand-vision { font-weight: 300; letter-spacing: 0.06em; color: var(--cognac); }
+    .nav-links { display: flex; align-items: center; gap: 22px; }
+    .btn { display: inline-block; background: var(--cognac); color: #fff; font-size: 0.95rem; font-weight: 600; text-decoration: none; padding: 11px 20px; border-radius: 8px; transition: background 150ms ease; }
+    .nav-links a.btn, .nav-links a.btn:hover { color: #fff; }
+    .btn:hover { background: var(--cognac-dark); }
+    .doc { max-width: 760px; margin: 0 auto; padding: 56px 24px 24px; }
+    .doc-head { margin-bottom: 8px; }
+    .doc-head h1 { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 700; letter-spacing: -0.01em; margin: 0 0 10px; }
+    .lede { font-size: 1.2rem; color: var(--text-secondary); margin: 0 0 8px; }
+    .step { padding: 40px 0; border-top: 1px solid var(--border); }
+    .step:first-of-type { border-top: none; }
+    .step h2 { font-size: 1.4rem; font-weight: 600; margin: 0 0 12px; letter-spacing: -0.01em; }
+    .step p { color: var(--text-secondary); margin: 0 0 14px; font-size: 1.05rem; }
+    .step ol, .step ul { color: var(--text-secondary); font-size: 1.05rem; padding-left: 1.3em; }
+    .step li { margin-bottom: 10px; }
+    .callout { background: color-mix(in srgb, var(--sage) 12%, transparent); border: 1px solid color-mix(in srgb, var(--sage) 35%, transparent); border-radius: 12px; padding: 18px 20px; margin-top: 8px; }
+    .callout p { color: var(--text-primary); margin: 0; }
+    .cta-row { margin: 22px 0 8px; }
+    .btn-lg { display: inline-block; background: var(--cognac); color: #fff; font-size: 1.05rem; font-weight: 600; text-decoration: none; padding: 14px 26px; border-radius: 10px; transition: background 150ms ease; }
+    .btn-lg:hover { background: var(--cognac-dark); }
+    .footer { text-align: center; padding: 40px 24px; font-size: 0.8rem; line-height: 1.7; color: var(--text-muted); border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="/"><span class="brand-bid">BID</span><span class="brand-vision">VISION</span></a>
+      <div class="nav-links">
+        <a class="btn" href="/beta">Apply for beta test</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="doc">
+    <header class="doc-head">
+      <h1>Beta testing checklist.</h1>
+      <p class="lede">A quick spin to put BidVision through its paces, plus how to tell us what you find. Five minutes, give or take.</p>
+    </header>
+
+    <section class="step">
+      <h2>Give these a try</h2>
+      <ol>
+        <li>Load a bid sheet (yours, or the sample below).</li>
+        <li>Set your weekly availability, then tweak a couple of dates.</li>
+        <li>Rank one filter with Prefer, Allow, or Exclude.</li>
+        <li>Drag your filters into a priority order.</li>
+        <li>Switch between Discover and Strict, and watch the list change.</li>
+        <li>On a phone or tablet, try it on both and see how each feels.</li>
+      </ol>
+      <div class="callout">
+        <p>No bid sheet handy? Grab the <a href="/sample/">sample bid sheet</a> and load that instead.</p>
+      </div>
+    </section>
+
+    <section class="step">
+      <h2>When something is off</h2>
+      <p>Jot three things and we can chase almost anything down: what you did, what you expected, and which device you were on.</p>
+      <ul>
+        <li>Easiest: tap the <strong>Feedback</strong> button inside the app. It opens the report form.</li>
+        <li>Or open the form directly (link below).</li>
+        <li>Screenshots help a lot. Email them to <a href="mailto:support@bidvision.app">support@bidvision.app</a>.</li>
+      </ul>
+      <div class="cta-row">
+        <a class="btn-lg" href="https://docs.google.com/forms/d/e/1FAIpQLSdBkgz7FIurBAd6s-l1DTJyvy3z2lsgqbXn7fsNNdzw9eWoYQ/viewform">Open the feedback form</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    BidVision, a product of FoxFinch Adaptations LLC.<br>
+    &copy; 2026 FoxFinch Adaptations LLC. Not affiliated with or endorsed by any airline.<br>
+    <a href="/privacy/">Privacy Policy</a>
+  </footer>
+</body>
+</html>
