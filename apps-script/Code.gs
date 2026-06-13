@@ -219,6 +219,9 @@ function sendWelcomeEmail(name, email) {
         <li>Or use the Feedback button in the app</li>
       </ul>
 
+      <p><strong>Questions, or just want to talk it through?</strong></p>
+      <p style="line-height: 1.8;">Text me directly at <strong>(215) 688-5012</strong>. Happy to help, and I want to hear how it's going.</p>
+
       <p style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #EDE8DE; font-size: 13px; color: #7A766F;">
         BidVision runs on Mac, Windows, Linux, iPhone, iPad, and Android — it's best on a desktop or tablet, but use whatever you've got.<br>
         No airline data is sent to or stored by BidVision servers. Everything stays on your device.
