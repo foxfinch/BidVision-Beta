@@ -30,7 +30,8 @@ const GAS_URL = 'https://script.google.com/macros/s/AKfycbyjy2oY1J3wHCe1TUKbeEmW
 // Download URLs — LAUNCH = v0.2.0-b8 on foxfinch/BidVision-Beta (published 2026-06-11).
 // Names read off the published release (no guessing). Linux ships amd64 + arm64.
 // All platforms now on b8 (Windows installer uploaded 2026-06-12; was a b6 fallback at launch).
-// iOS has NO URL — invite-only via TestFlight (email path in the UI).
+// iOS has no DOWNLOADS entry — it's an external public TestFlight join link hardcoded
+// in the HTML (build 8 approved for external testing 2026-06-13), not a hosted asset.
 const B8 = 'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b8';
 const DOWNLOADS = {
   'mac-arm':      `${B8}/BidVision-macOS-Apple-Silicon-0.2.0-b8.zip`,
@@ -321,8 +322,8 @@ function showMobileNotice() {
 // === Download attribution (fire-and-forget; email already in localStorage) ===
 // Logs who downloaded what/when to the Beta Tracker. Reads the asset version from
 // the button's href so per-platform differences (e.g. Windows on a fallback build)
-// are captured accurately. iOS has no .download-btn (it's an email invite), so it's
-// naturally excluded.
+// are captured accurately. iOS is a .download-btn too (the TestFlight join link), so a
+// join click is logged as platform 'ios' with an empty version (no versioned asset).
 function initDownloadTracking() {
   document.querySelectorAll('.download-btn').forEach(btn => {
     btn.addEventListener('click', () => {

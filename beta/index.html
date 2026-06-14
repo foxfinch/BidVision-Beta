@@ -267,8 +267,7 @@
         <h3 class="dl-section-head">On your phone or tablet</h3>
         <p class="mobile-hint" id="mobile-hint" style="display:none;">You're on a phone or tablet &mdash; here's how to install.</p>
 
-        <!-- Android — sideload APK (b8 published; direct download). Listed first: iOS is
-             invite-only until Apple beta review clears + external testers are allowed. -->
+        <!-- Android — sideload APK (b8 published; direct download). -->
         <div class="mobile-platform">
           <a href="#" class="download-btn" id="dl-android" data-platform="android">
             <span class="platform-icon">&#129302;</span>
@@ -279,12 +278,18 @@
           </a>
         </div>
 
-        <!-- iPhone / iPad — TestFlight (invite-only; email-to-add while Apple beta review is pending) -->
+        <!-- iPhone / iPad — public TestFlight link (build 8 approved for external testing 2026-06-13) -->
         <div class="mobile-platform">
-          <div class="mobile-platform-name">&#63743; iPhone &amp; iPad</div>
-          <div class="ios-invite">
-            <p><strong>Want BidVision on iOS?</strong> Email <a href="mailto:support@bidvision.app?subject=BidVision%20iOS%20beta&amp;body=Hi%2C%20I%27d%20like%20the%20BidVision%20iOS%20beta.%20The%20email%20that%20is%20my%20Apple%20ID%20is%3A%20">support@bidvision.app</a> with the email address that's your <strong>Apple&nbsp;ID</strong>, and we'll add you to TestFlight and send your invite.</p>
-            <p class="ios-invite-note">iOS runs through Apple's free <strong>TestFlight</strong> app. While we finish Apple's beta review, we add testers by hand &mdash; so your invite may take a day. Full step-by-step is in the install guide below. <!-- SCAFFOLD: once Apple Beta App Review clears, swap this email step for a one-tap public TestFlight link. --></p>
+          <a href="https://testflight.apple.com/join/Nv4ajVHu" class="download-btn" id="dl-ios" data-platform="ios" target="_blank" rel="noopener">
+            <span class="platform-icon">&#63743;</span>
+            <span class="platform-info">
+              <span class="platform-name">iPhone &amp; iPad</span>
+              <span class="platform-detail">Through Apple&rsquo;s free TestFlight app &mdash; open this on the device you&rsquo;ll use</span>
+            </span>
+          </a>
+          <div class="ios-invite" style="margin-top: 12px;">
+            <p>iOS runs through Apple&rsquo;s free <strong>TestFlight</strong> app. Tap the button above <strong>on your iPhone or iPad</strong> to join &mdash; no invite to wait for.</p>
+            <p class="ios-invite-note">Opening the link on a different device installs BidVision there, not on your iPad &mdash; so tap it on the device you actually want it on. Full step-by-step is in the install guide below.</p>
           </div>
         </div>
       </div>
@@ -325,10 +330,9 @@
 
             <h4>iPhone &amp; iPad (TestFlight)</h4>
             <ol>
-              <li>Email us the address that's your <strong>Apple&nbsp;ID</strong> (see &ldquo;On your phone or tablet&rdquo; above), and wait for the invite email.</li>
-              <li>On your iPhone or iPad, install the free <strong>TestFlight</strong> app from the App Store.</li>
-              <li>Open our invite email <em>on that device</em> and tap <strong>Start Testing</strong> (or <strong>View in TestFlight</strong>).</li>
-              <li>In TestFlight, tap <strong>Accept</strong>, then <strong>Install</strong>.</li>
+              <li>On the iPhone or iPad you'll use, install the free <strong>TestFlight</strong> app from the App Store.</li>
+              <li><em>On that same device,</em> tap the <strong>iPhone &amp; iPad</strong> button in the &ldquo;On your phone or tablet&rdquo; section above (or open <a href="https://testflight.apple.com/join/Nv4ajVHu" target="_blank" rel="noopener">testflight.apple.com/join/Nv4ajVHu</a>). Tapping it on a different device installs BidVision <em>there</em> &mdash; so use the one you want it on.</li>
+              <li>TestFlight opens to BidVision &mdash; tap <strong>Accept</strong>, then <strong>Install</strong>.</li>
               <li>Open BidVision from your home screen. New versions arrive through TestFlight &mdash; tap <strong>Update</strong> when prompted.</li>
             </ol>
 
