@@ -197,7 +197,7 @@ function sendWelcomeEmail(name, email) {
       <ol style="line-height: 1.8;">
         <li>Go to <a href="${CONFIG.LANDING_PAGE_URL}" style="color: #8B5E3C;">${CONFIG.LANDING_PAGE_URL}</a></li>
         <li>Enter your access code</li>
-        <li>Download the build for your device</li>
+        <li>Download the build for your device (or join via TestFlight on iPhone and iPad)</li>
         <li>Follow the install instructions on the page</li>
       </ol>
 
@@ -211,7 +211,7 @@ function sendWelcomeEmail(name, email) {
       <p style="line-height: 1.8;">Full five-minute checklist: <a href="https://bidvision.app/testing/" style="color: #8B5E3C;">bidvision.app/testing</a></p>
 
       <p><strong>Need your bid sheet?</strong></p>
-      <p style="line-height: 1.8;">Log into the <a href="https://faportal.aa.com" style="color: #8B5E3C;">FA Portal</a>, then go to <strong>Bidding Resources &rarr; Crew Planning &rarr; Current Bid Sheets</strong>. Pick your base and save the PDF.</p>
+      <p style="line-height: 1.8;">Log into the <a href="https://faportal.aa.com" style="color: #8B5E3C;">Crew Portal</a>, then go to <strong>Departments &rarr; Crew Planning &rarr; Current Bid Sheets</strong>. Pick your base and save the PDF.</p>
 
       <p><strong>Found a bug or have feedback?</strong></p>
       <ul style="line-height: 1.8;">
