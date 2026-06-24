@@ -18,8 +18,18 @@ const CONFIG = {
   // Set EMIT_OFFSET = 0 to emit the current calendar month instead. See currentBetaCode().
   EMIT_OFFSET: 1,
   GRANDFATHERED_CODES: ['BID-0426', 'BID-0726'],  // older codes that stay valid forever
-  AUTO_APPROVE_LIMIT: 10,
-  OWNER_EMAIL: 'hello@bidvision.app',
+  // First N non-duplicate signups are auto-approved: welcome email + access code sent immediately.
+  // N is a safety trip-wire, not an access gate (codes are derivable; downloads are free + on-device).
+  // Beyond N: the signup is recorded as "Waitlist" and an early-access email goes out automatically
+  // (warm "you're in line", no code yet); the admin alert is flagged WAITLISTED so you can open spots
+  // by hand. The landing-page confirmation is identical either way.
+  AUTO_APPROVE_LIMIT: 100,
+  OWNER_EMAIL: 'hello@bidvision.app',  // tester-facing: welcome-email reply-to (a Google Group; do NOT reuse for self-notifications)
+  // Admin signup alerts go HERE, not to OWNER_EMAIL. hello@/support@ are Google Groups
+  // jameson@foxfinch.co belongs to, so Gmail self-send dedup suppresses group-addressed
+  // mail to Sent only (never an inbox). The primary mailbox + a filterable +tag delivers
+  // to the inbox normally (verified 2026-06-24). Email only (SMS declined).
+  NOTIFY_EMAIL: 'jameson+bidvision@foxfinch.co',
   LANDING_PAGE_URL: 'https://bidvision.app/beta',
   FORM_URL: 'https://docs.google.com/forms/d/e/1FAIpQLSdBkgz7FIurBAd6s-l1DTJyvy3z2lsgqbXn7fsNNdzw9eWoYQ/viewform',
 };
@@ -70,7 +80,7 @@ function handleRegistration(data) {
   if (!isDuplicate) {
     const currentCount = sheet.getLastRow() - 1; // minus header
     const autoApproved = currentCount < CONFIG.AUTO_APPROVE_LIMIT;
-    const status = autoApproved ? 'Auto-approved' : 'Pending review';
+    const status = autoApproved ? 'Auto-approved' : 'Waitlist';
 
     // Write to sheet: Name | Base | Platform | Status | Registered | BP1 | BP2 | Email | Phone | SMS | Code Used | Notes
     sheet.appendRow([
@@ -88,9 +98,12 @@ function handleRegistration(data) {
       '',  // Notes
     ]);
 
-    // Auto-send welcome email for first N registrations
+    // Auto-send the welcome email for the first N registrations; everyone past the trip-wire
+    // gets the early-access (waitlist) email instead — recorded, acknowledged, no code yet.
     if (autoApproved) {
       sendWelcomeEmail(data.name, data.email);
+    } else {
+      sendWaitlistEmail(data.name, data.email);
     }
 
     // Notify owner
@@ -238,9 +251,47 @@ function sendWelcomeEmail(name, email) {
   });
 }
 
+// Sent to anyone who registers once we're past AUTO_APPROVE_LIMIT. Warm "you're in line"
+// acknowledgement — NO access code. Replies route to the support group (OWNER_EMAIL), not a
+// personal line. Promote a waitlister by hand: send them the current BID-MMYY code (or run
+// sendWelcomeEmail from the editor).
+function sendWaitlistEmail(name, email) {
+  const subject = "You're on the BidVision early-access list";
+  const htmlBody = `
+    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 520px; margin: 0 auto; color: #2A2A28;">
+      <div style="text-align: center; padding: 32px 0 24px;">
+        <h1 style="font-size: 24px; margin: 0;">
+          <span style="font-weight: 700; color: #8B5E3C;">BID</span><span style="font-weight: 300; color: #8B5E3C; letter-spacing: 0.06em;">VISION</span>
+        </h1>
+      </div>
+
+      <p>Hey ${name},</p>
+
+      <p>Thanks for signing up for the BidVision beta. We're at capacity for this round, so I've put you on the early-access list.</p>
+
+      <p>You don't need to do anything. I'll email your access code the moment a spot opens up, or when we go live. You're in line.</p>
+
+      <p style="line-height: 1.8;">Glad you're interested. If you have a question in the meantime, just reply to this note.</p>
+
+      <p style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #EDE8DE; font-size: 13px; color: #7A766F;">
+        BidVision runs on Mac, Windows, Linux, iPhone, iPad, and Android.<br>
+        No airline data is sent to or stored by BidVision servers. Everything stays on your device.
+      </p>
+    </div>
+  `;
+
+  MailApp.sendEmail({
+    to: email,
+    subject: subject,
+    htmlBody: htmlBody,
+    replyTo: CONFIG.OWNER_EMAIL,
+    name: 'BidVision Beta',
+  });
+}
+
 function notifyOwner(name, base, platform, email, autoApproved) {
   MailApp.sendEmail({
-    to: CONFIG.OWNER_EMAIL,
+    to: CONFIG.NOTIFY_EMAIL,
     subject: `BidVision Beta: New signup — ${name} (${base})`,
     body: [
       `New beta registration:`,
@@ -248,7 +299,7 @@ function notifyOwner(name, base, platform, email, autoApproved) {
       `  Email: ${email}`,
       `  Base: ${base}`,
       `  Platform: ${platform}`,
-      `  Auto-approved: ${autoApproved ? 'Yes (email sent)' : 'No (pending review)'}`,
+      `  Auto-approved: ${autoApproved ? 'Yes (welcome email sent)' : 'No — WAITLISTED (early-access email sent; open a spot to send their code)'}`,
       ``,
       `View tracker: https://docs.google.com/spreadsheets/d/${CONFIG.SHEET_ID}/edit`,
     ].join('\n'),
