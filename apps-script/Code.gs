@@ -25,6 +25,10 @@ const CONFIG = {
   // by hand. The landing-page confirmation is identical either way.
   AUTO_APPROVE_LIMIT: 100,
   OWNER_EMAIL: 'hello@bidvision.app',  // tester-facing: welcome-email reply-to (a Google Group; do NOT reuse for self-notifications)
+  // Tester-facing FROM address. Verified send-as alias on jameson@foxfinch.co (verification=accepted),
+  // so GmailApp.sendEmail({from: SENDER_EMAIL}) sends as hello@bidvision.app — sender, brand, and
+  // reply-to all aligned on bidvision.app (MailApp couldn't do this; it forced From = jameson@foxfinch.co).
+  SENDER_EMAIL: 'hello@bidvision.app',
   // Admin signup alerts go HERE, not to OWNER_EMAIL. hello@/support@ are Google Groups
   // jameson@foxfinch.co belongs to, so Gmail self-send dedup suppresses group-addressed
   // mail to Sent only (never an inbox). The primary mailbox + a filterable +tag delivers
@@ -242,10 +246,28 @@ function sendWelcomeEmail(name, email) {
     </div>
   `;
 
-  MailApp.sendEmail({
-    to: email,
-    subject: subject,
+  const plainBody = [
+    `Hey ${name},`,
+    ``,
+    `Welcome to the BidVision beta. Your access code: ${code}`,
+    ``,
+    `To get started:`,
+    `  1. Go to ${CONFIG.LANDING_PAGE_URL}`,
+    `  2. Enter your access code`,
+    `  3. Download the build for your device (or join via TestFlight on iPhone and iPad)`,
+    `  4. Follow the install instructions on the page`,
+    ``,
+    `Full five-minute checklist: https://bidvision.app/testing/`,
+    `Found a bug or have feedback? ${CONFIG.FORM_URL} or the in-app Feedback button.`,
+    `Questions, or just want to talk it through? Text me at (215) 688-5012.`,
+    ``,
+    `No airline data is sent to or stored by BidVision servers. Everything stays on your device.`,
+  ].join('\n');
+
+  // GmailApp (not MailApp) so we can set from: a verified alias and leave an auditable Sent copy.
+  GmailApp.sendEmail(email, subject, plainBody, {
     htmlBody: htmlBody,
+    from: CONFIG.SENDER_EMAIL,
     replyTo: CONFIG.OWNER_EMAIL,
     name: 'BidVision Beta',
   });
@@ -280,10 +302,22 @@ function sendWaitlistEmail(name, email) {
     </div>
   `;
 
-  MailApp.sendEmail({
-    to: email,
-    subject: subject,
+  const plainBody = [
+    `Hey ${name},`,
+    ``,
+    `Thanks for signing up for the BidVision beta. We're at capacity for this round, so I've put you on the early-access list.`,
+    ``,
+    `You don't need to do anything. I'll email your access code the moment a spot opens up, or when we go live. You're in line.`,
+    ``,
+    `Glad you're interested. If you have a question in the meantime, just reply to this note.`,
+    ``,
+    `No airline data is sent to or stored by BidVision servers. Everything stays on your device.`,
+  ].join('\n');
+
+  // GmailApp (not MailApp) so we can set from: a verified alias and leave an auditable Sent copy.
+  GmailApp.sendEmail(email, subject, plainBody, {
     htmlBody: htmlBody,
+    from: CONFIG.SENDER_EMAIL,
     replyTo: CONFIG.OWNER_EMAIL,
     name: 'BidVision Beta',
   });
