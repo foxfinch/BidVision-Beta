@@ -323,17 +323,20 @@ function showMobileNotice() {
 // Logs who downloaded what/when to the Beta Tracker. Reads the asset version from
 // the button's href so per-platform differences (e.g. Windows on a fallback build)
 // are captured accurately. iOS is a .download-btn too (the TestFlight join link), so a
-// join click is logged as platform 'ios' with an empty version (no versioned asset).
+// join click is logged as platform 'ios' with version 'TestFlight' (no versioned asset).
 function initDownloadTracking() {
   document.querySelectorAll('.download-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const platform = btn.dataset.platform || (btn.id || '').replace(/^dl-/, '');
       const verMatch = (btn.href || '').match(/(\d+\.\d+\.\d+-b\d+)/);
+      // Fall back to a meaningful label when the href has no versioned asset:
+      // iOS = the TestFlight join link; anything else without a match stays blank.
+      const version = verMatch ? verMatch[1] : (platform === 'ios' ? 'TestFlight' : '');
       submitToGAS({
         action: 'download',
         email: localStorage.getItem('bidvision_email') || '',
         platform: platform,
-        version: verMatch ? verMatch[1] : '',
+        version: version,
       });
     });
   });
