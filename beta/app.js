@@ -27,19 +27,28 @@ function bidCodeFor(date, offsetMonths) {
 // Apps Script web app URL (set after deployment)
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbyjy2oY1J3wHCe1TUKbeEmWIgA7GXzkwb4R3J0TPVNG5Hmt3W8ElmlQcmN2kaW_xImoOg/exec';
 
-// Download URLs — LAUNCH = v0.2.0-b8 on foxfinch/BidVision-Beta (published 2026-06-11).
+// Download URLs — current cut = v0.2.0-b9 on foxfinch/BidVision-Beta (published 2026-08-13).
 // Names read off the published release (no guessing). Linux ships amd64 + arm64.
-// All platforms now on b8 (Windows installer uploaded 2026-06-12; was a b6 fallback at launch).
 // iOS has no DOWNLOADS entry — it's an external public TestFlight join link hardcoded
-// in the HTML (build 8 approved for external testing 2026-06-13), not a hosted asset.
-const B8 = 'https://github.com/foxfinch/BidVision-Beta/releases/download/v0.2.0-b8';
+// in the HTML, not a hosted asset.
+//
+// TO BUMP A RELEASE: change RELEASE below and nothing else. Every asset name derives from
+// it, so one edit repoints all six links (this used to be six separate literals).
+//
+// Leaving this stale is not cosmetic — it strands every tester. Desktop builds carry a baked
+// 60-day expiry that hard-blocks the app; the in-app wall sends people to /continue, which
+// sends them here. If this still points at the previous build, they download the very binary
+// they came here to escape. That is exactly what happened between 2026-08-10 (b8 expired)
+// and 2026-08-13 (b9 published).
+const RELEASE = '0.2.0-b9';
+const BASE = `https://github.com/foxfinch/BidVision-Beta/releases/download/v${RELEASE}`;
 const DOWNLOADS = {
-  'mac-arm':      `${B8}/BidVision-macOS-Apple-Silicon-0.2.0-b8.zip`,
-  'mac-intel':    `${B8}/BidVision-macOS-Intel-0.2.0-b8.zip`,
-  'windows':      `${B8}/BidVision-Windows-0.2.0-b8.exe`,
-  'linux':        `${B8}/BidVision-Linux-amd64-0.2.0-b8.deb`,
-  'linux-arm64':  `${B8}/BidVision-Linux-arm64-0.2.0-b8.deb`,
-  'android':      `${B8}/BidVision-Android-0.2.0-b8.apk`,
+  'mac-arm':      `${BASE}/BidVision-macOS-Apple-Silicon-${RELEASE}.zip`,
+  'mac-intel':    `${BASE}/BidVision-macOS-Intel-${RELEASE}.zip`,
+  'windows':      `${BASE}/BidVision-Windows-${RELEASE}.exe`,
+  'linux':        `${BASE}/BidVision-Linux-amd64-${RELEASE}.deb`,
+  'linux-arm64':  `${BASE}/BidVision-Linux-arm64-${RELEASE}.deb`,
+  'android':      `${BASE}/BidVision-Android-${RELEASE}.apk`,
 };
 
 // === State management ===
