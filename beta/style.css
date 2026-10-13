@@ -520,6 +520,11 @@ body {
 }
 
 /* === Toggle Link === */
+/* The hidden attribute must beat any author display rule. Without this, setting
+   el.hidden = true on anything with an explicit `display` (.toggle-link below) is a
+   no-op and the element stays clickable. */
+[hidden] { display: none !important; }
+
 .toggle-link {
   display: block;
   text-align: center;

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BidVision Beta</title>
+  <title>Keep me posted | BidVision</title>
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -42,18 +42,18 @@
     <!-- Hero -->
     <header class="hero">
       <img src="assets/icon.png" alt="BidVision" class="hero-icon">
-      <h1 class="hero-title">Smart tools for smarter bidding.</h1>
+      <h1 class="hero-title">The BidVision beta has wrapped up.</h1>
       <span class="privacy-badge">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        All data stays on your device
+        Your bid sheets stay on your device.
       </span>
     </header>
 
     <!-- State: Registration Form -->
     <div id="state-register" class="state">
       <div class="card">
-        <h2 class="card-title">Join the Beta</h2>
-        <p class="card-subtitle">Help shape BidVision before launch. Sign up and we'll send you access.</p>
+        <h2 class="card-title">Keep me posted</h2>
+        <p class="card-subtitle">The beta has wrapped up and there's nothing to download right now. Leave your details and I'll write if there's ever something new worth trying.</p>
 
         <form id="register-form">
           <div class="form-group">
@@ -63,7 +63,7 @@
 
           <div class="form-group">
             <label class="form-label" for="reg-email">Email</label>
-            <input type="email" id="reg-email" class="form-input" required autocomplete="email" placeholder="For your access code">
+            <input type="email" id="reg-email" class="form-input" required autocomplete="email" placeholder="Where I should reach you">
           </div>
 
           <div class="form-group">
@@ -129,15 +129,15 @@
           </div>
 
           <p style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 20px;">
-            Your info is only used for beta coordination and won't be shared.
+            Name, email and base are all that's kept, only so I can write you. They won't be shared.
           </p>
 
-          <button type="submit" class="btn btn-primary" id="register-btn">Join the Beta</button>
+          <button type="submit" class="btn btn-primary" id="register-btn">Add me to the list</button>
           <p id="register-error" class="error-text"></p>
         </form>
       </div>
 
-      <button class="toggle-link" id="show-code-entry">Already have a code?</button>
+      <button class="toggle-link" id="show-code-entry" hidden>Already have a code?</button>
     </div>
 
     <!-- State: Registered (waiting for code) -->
@@ -370,21 +370,21 @@
         <div class="message">
           <div class="message-icon">&#128587;</div>
           <p class="message-title">The beta period has ended.</p>
-          <p class="message-text">Thanks for testing BidVision! Stay tuned for the public release.</p>
+          <p class="message-text">Thanks for testing BidVision.</p>
         </div>
       </div>
     </div>
 
     <!-- Why BidVision (marketing — below the sign-up + downloads) -->
     <section class="why-section">
-      <h2 class="why-title">Why BidVision?</h2>
-      <p class="why-lead">Your bid sheet has over a thousand sequences. BidVision helps you find the ones that actually fit your life &mdash; faster and with more flexibility than anything else out there.</p>
+      <h2 class="why-title">What BidVision did</h2>
+      <p class="why-lead">Your bid sheet has over a thousand sequences. From April to October 2026, a small group of crew used BidVision to find the ones that actually fit their lives.</p>
 
       <div class="why-features">
         <div class="why-feature">
           <div class="why-feature-text">
-            <h3>Build your schedule around your life</h3>
-            <p>Mark the days that matter &mdash; a wedding, a trip, your kid's recital &mdash; and BidVision finds trips that work around them. Or prioritize the trips you like and see which days they fall on. It works either way.</p>
+            <h3>Your schedule, built around your life</h3>
+            <p>You marked the days that mattered (a wedding, a trip, your kid's recital) and BidVision found trips that worked around them. Or you prioritized the trips you liked and saw which days they fell on. It worked either way.</p>
           </div>
           <div class="why-feature-media">
             <img class="shot" src="/img/availability.png" alt="Availability: a weekly template plus a calendar of can-work and can't-work windows" loading="lazy">
@@ -393,8 +393,8 @@
 
         <div class="why-feature flip">
           <div class="why-feature-text">
-            <h3>More flexible than what you're using now</h3>
-            <p>BidVision is built for how we actually bid &mdash; with more filters, more control, and more ways to search than the current tools offer. Updated, robust, and designed around real crew needs.</p>
+            <h3>Your preferences, in your order</h3>
+            <p>Every filter was a preference you could weight, not just a checkbox. You dragged them into a priority order and BidVision broke ties the way you would: your must-haves moved a trip further than your nice-to-haves.</p>
           </div>
           <div class="why-feature-media">
             <img class="shot" src="/img/filter-ranking.png" alt="Filter Ranking: active filters dragged into priority order" loading="lazy" style="max-width: 360px;">
@@ -403,8 +403,8 @@
 
         <div class="why-feature">
           <div class="why-feature-text">
-            <h3>Soft filters find hidden gems</h3>
-            <p>Most tools use hard yes-or-no filters that hide everything else. BidVision lets you prefer, allow, or exclude &mdash; so trips that almost match still show up, scored and ranked. You might find a sequence you'd never have seen otherwise.</p>
+            <h3>Soft filters found hidden gems</h3>
+            <p>A hard yes-or-no filter hides everything else. BidVision let you prefer, allow, or exclude, so trips that almost matched still showed up, scored and ranked. You might have found a sequence you'd never have seen otherwise.</p>
           </div>
           <div class="why-feature-media">
             <img class="shot" src="/img/preferences.png" alt="Prefer, Allow, and Exclude controls on a filter" loading="lazy" style="max-width: 320px;">
@@ -412,7 +412,7 @@
         </div>
       </div>
 
-      <p class="why-bottom">BidVision is a pre-bid research tool &mdash; use it anytime to explore your options before the bidding window opens.</p>
+      <p class="why-bottom">BidVision was a pre-bid research tool: something to explore your options with before the bidding window opened. If there's ever something new worth trying, I'll write.</p>
     </section>
 
   </div>
@@ -420,8 +420,8 @@
   <!-- Footer -->
   <footer class="footer">
     BidVision is not affiliated with or endorsed by any airline.<br>
-    No airline data is sent to or stored by BidVision servers.<br>
-    All parsing, filtering, and scoring happens on your device.<br>
+    Bid sheets, availability and preferences are read on your device and never uploaded.<br>
+    The only things stored elsewhere are the name, email and base you typed into the signup form.<br>
     <br>
     &copy; 2026 FoxFinch Adaptations LLC. BidVision is a product of FoxFinch Adaptations LLC.<br>
     <a href="/privacy/">Privacy Policy</a>

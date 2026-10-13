@@ -51,6 +51,15 @@ const DOWNLOADS = {
   'android':      `${BASE}/BidVision-Android-${RELEASE}.apk`,
 };
 
+// === Beta wind-down ===
+// One switch. true keeps the signup form but reframes it as early-access-only: no access
+// codes, no download buttons for an expired build, and every code path hidden. A returning
+// tester lands on the same explanation as a new visitor. All wind-down copy is applied from
+// JS below, so the HTML stays correct for an open beta and flipping this back to false fully
+// reopens the page. The backend half lives in apps-script/Code.gs, which records every signup
+// to the notify list and sends one plain thank-you. It has no path that can issue a code.
+const BETA_CLOSED = true;
+
 // === State management ===
 const STATES = ['register', 'registered', 'code', 'downloads', 'expired'];
 
@@ -62,6 +71,11 @@ function showState(name) {
 }
 
 function getState() {
+  // Wind-down uses its own key so prior beta state (bidvision_beta / bidvision_registered,
+  // still set for the 17 beta testers) doesn't masquerade as an early-access signup.
+  if (BETA_CLOSED) {
+    return localStorage.getItem('bidvision_notify') === 'true' ? 'registered' : 'register';
+  }
   if (localStorage.getItem('bidvision_beta') === 'true') return 'downloads';
   if (localStorage.getItem('bidvision_registered') === 'true') return 'registered';
   return 'register';
@@ -75,6 +89,10 @@ async function sha256(text) {
 }
 
 async function validateCode(input) {
+  // Second, independent gate. Hiding the code UI is presentation; this is behaviour.
+  // Codes are derivable (BID-MMYY), so a closed beta must refuse them outright rather
+  // than rely on the entry points being out of sight.
+  if (BETA_CLOSED) return { valid: false };
   const normalized = input.trim().toUpperCase();
   // 1) Grandfathered codes (hashed)
   const hash = await sha256(normalized);
@@ -222,12 +240,14 @@ function initRegistrationForm() {
       name: document.getElementById('reg-name').value.trim(),
       email: document.getElementById('reg-email').value.trim(),
       base: document.getElementById('reg-base').value,
-      platform: document.querySelector('input[name="platform"]:checked')?.value || '',
-      phone: document.getElementById('reg-phone').value.trim(),
-      smsOptIn: document.getElementById('reg-sms').checked,
+      // Early-access signups collect name/email/base only: there is nothing to install, so
+      // platform is moot and a phone number has no near-term use. Reopening restores all three.
+      platform: BETA_CLOSED ? '' : (document.querySelector('input[name="platform"]:checked')?.value || ''),
+      phone: BETA_CLOSED ? '' : document.getElementById('reg-phone').value.trim(),
+      smsOptIn: BETA_CLOSED ? false : document.getElementById('reg-sms').checked,
     };
 
-    if (!data.name || !data.email || !data.base || !data.platform) {
+    if (!data.name || !data.email || !data.base || (!BETA_CLOSED && !data.platform)) {
       errorEl.textContent = 'Please fill in all required fields.';
       errorEl.classList.add('visible');
       return;
@@ -237,6 +257,7 @@ function initRegistrationForm() {
     submitToGAS(data);
 
     // Save state and show confirmation
+    if (BETA_CLOSED) localStorage.setItem('bidvision_notify', 'true');
     localStorage.setItem('bidvision_registered', 'true');
     localStorage.setItem('bidvision_name', data.name);
     localStorage.setItem('bidvision_email', data.email);
@@ -386,6 +407,37 @@ document.addEventListener('DOMContentLoaded', () => {
   if (state === 'downloads') {
     highlightPlatform();
     showMobileNotice();
+  }
+
+  // Wind-down copy + code-path removal. Kept in JS so BETA_CLOSED is the only switch.
+  if (BETA_CLOSED) {
+    ['show-code-entry', 'show-register'].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) el.hidden = true;
+    });
+    document.querySelectorAll('.code-entry-inline').forEach((el) => { el.hidden = true; });
+
+    const setText = (sel, text) => {
+      const el = document.querySelector(sel);
+      if (el) el.textContent = text;
+    };
+    setText('#state-register .card-title', 'Keep me posted');
+    setText('#state-register .card-subtitle', "The beta has wrapped up and there's nothing to download right now. Leave your details and I'll write if there's ever something new worth trying.");
+    setText('#register-btn', 'Add me to the list');
+    setText('#registered-text', "I'll write if there's ever something new worth trying. Nothing else to do.");
+    const emailInput = document.getElementById('reg-email');
+    if (emailInput) emailInput.placeholder = 'Where I should reach you';
+
+    // Trim the form to name/email/base. The platform radio carries `required`, and a hidden
+    // required control makes the browser refuse to submit with a non-focusable-invalid error,
+    // so the attribute has to come off, not just the visibility.
+    document.querySelectorAll('input[name="platform"]').forEach((el) => { el.required = false; });
+    ['reg-phone', 'reg-sms'].forEach((id) => {
+      const group = document.getElementById(id)?.closest('.form-group');
+      if (group) group.hidden = true;
+    });
+    const platformGroup = document.querySelector('input[name="platform"]')?.closest('.form-group');
+    if (platformGroup) platformGroup.hidden = true;
   }
 
   // Personalize registered state

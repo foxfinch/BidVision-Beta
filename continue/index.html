@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Keep going with BidVision &mdash; BidVision</title>
+  <title>Beta ended | BidVision</title>
   <!-- PERMANENT SLUG: this page must always live at exactly /continue.
        It is the stable indirection target the desktop app links to from its
        beta-expiry banner and "Beta Build Expired" modal (https://bidvision.app/continue).
        The app's link is frozen per-build, so the post-expiry destination is decided
        HERE, not by shipping a new build.
-       Current behavior: RE-BETA MODE (get the latest beta build).
+       Current behavior: WIND-DOWN MODE (the beta has ended).
        At public launch, swap to LIVE MODE (see commented block at the bottom of <main>). -->
-  <meta name="description" content="Your BidVision beta build expired on purpose. Here's how to grab the latest build and keep going&mdash;your saved setup carries over.">
+  <meta name="description" content="The BidVision beta has ended. If the app stopped opening, that is the built-in expiry date rather than anything breaking, and there is nothing you need to do.">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -92,43 +92,45 @@
     <div class="nav-inner">
       <a class="brand" href="/"><span class="brand-bid">BID</span><span class="brand-vision">VISION</span></a>
       <div class="nav-links">
-        <a class="btn" href="/beta">Apply for beta test</a>
+        <a class="btn" href="/beta">Keep me posted</a>
       </div>
     </div>
   </nav>
 
   <main class="doc">
-    <!-- ===== RE-BETA MODE (current) ===== -->
+    <!-- ===== WIND-DOWN MODE (current, 2026-10-12) =====
+         Where the in-app "build expired" wall lands. Two readers: a tester whose app just
+         stopped, and anyone else who finds the link. Testers get the answer and an explicit
+         "nothing to do"; the signup link is scoped to newcomers so testers aren't told to
+         re-register. Voice matches the wind-down email sent 2026-10-12. -->
     <header class="doc-head">
-      <h1>Keep going with BidVision.</h1>
-      <p class="lede">Your build reached its expiration date. That's by design&mdash;here's how to pick up right where you left off.</p>
-      <div class="cta-row">
-        <a class="btn-lg" href="https://bidvision.app/beta">Get the latest build</a>
-      </div>
+      <h1>Thank you for testing BidVision.</h1>
+      <p class="lede">If the app stopped opening, that's the beta's built-in expiry date rather than anything breaking. Nothing is wrong on your end.</p>
     </header>
 
     <section class="step">
-      <h2>Why builds expire</h2>
-      <p>BidVision is still in beta, and beta builds are set to expire on purpose. It keeps everyone on the newest, safest build instead of running an old one with bugs we've already fixed. So an expiry notice isn't a problem&mdash;it's just a nudge to grab the current build. It takes about a minute.</p>
+      <h2>What's happening</h2>
+      <p>I'm not going to push another beta build after this one. Based on the feedback I've gotten, I'm not convinced the current design adds up to a tool people will actually want to reach for, so I'm going to spend some time back at the drawing board instead of building further on a shape I'm unsure about.</p>
+      <p>Your bid sheets and settings never left your device, and anything you saved is still sitting there. You can delete the app or keep it, either is fine.</p>
     </section>
 
     <section class="step">
-      <h2>If BidVision says your build expired</h2>
-      <ol>
-        <li>Go to <a href="https://bidvision.app/beta">bidvision.app/beta</a>.</li>
-        <li>Enter your access code.</li>
-        <li>Download the latest build for your computer (Mac, Windows, or Chromebook/Linux).</li>
-        <li>Install it over your old copy&mdash;no need to uninstall first.</li>
-      </ol>
+      <h2>If you were one of the testers</h2>
+      <p>There's nothing you need to do, and no need to sign up for anything. I already have your details, so when there's something worth a look you'll hear from me directly. If you'd rather I delete them, just email me and they're gone.</p>
       <div class="callout">
-        <h2>Your setup carries over.</h2>
-        <p>Your saved bid sheets, availability, and preferences live in your computer's app-data folder, not inside the app itself&mdash;so updating the build leaves all of it untouched. Open the new build and everything's right where you left it.</p>
+        <h2>Any last feedback?</h2>
+        <p>I'd love to hear it, and there's no wrong answer. Even "I couldn't get it to work" or "I didn't have time to learn it" is genuinely useful. <a href="mailto:hello@bidvision.app">hello@bidvision.app</a>.</p>
       </div>
     </section>
 
     <section class="step">
-      <h2>One more thing&mdash;for early adopters</h2>
-      <p>When BidVision goes live, beta testers get founding-member pricing. More on that soon&mdash;thanks for helping us build it.</p>
+      <h2>If you're new here</h2>
+      <p>The beta has wrapped up, so there's nothing to download right now. If you'd like a note when there's something new worth trying, you can <a href="https://bidvision.app/beta">leave your email</a> and I'll reach out.</p>
+    </section>
+
+    <section class="step">
+      <h2>Thanks again</h2>
+      <p>I'm grateful anyone was willing to put their name down for an unfinished app built by someone they fly with. I still intend to make something properly useful, and when I do you'll be on the first list I reach out to.</p>
     </section>
 
     <!-- ===== LIVE MODE (swap in at public launch) =====
@@ -150,7 +152,7 @@
            3. Keep a short "moving from beta? your data carries over" reassurance, mirroring
               the RE-BETA MODE callout, so upgrading testers don't fear losing their setup.
 
-         Leave the nav "Apply for beta test" button only if beta is still open at launch;
+         Leave the nav "Get early access" button only if beta is still open at launch;
          otherwise point it at the live signup. The footer below stays as-is.
     -->
   </main>
