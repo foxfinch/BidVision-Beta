@@ -102,7 +102,7 @@
       <li>stay on your device until you remove them (the app's "clear all data" does this, as does uninstalling it).</li>
     </ul>
     <p>BidVision needs <strong>no account, no sign-in and no internet connection</strong> to read and filter your bid sheet. You get your bid sheet yourself, from your airline's own site, and load the file. I operate no servers that receive your airline or schedule data, because there are none.</p>
-    <p><strong>Android backup.</strong> Version 0.2.0-b10 turns off Android's automatic app backup, so your bid data is not copied into your Google account's device backup. Earlier Android versions allowed it, which meant Android itself could include the app's data in your own Google backup (never in anything of mine).</p>
+    <p><strong>Device backups.</strong> Version 0.2.0-b10 keeps your bid data out of your phone's or tablet's cloud backup. On Android it turns off automatic app backup, so nothing is copied into your Google account's backup. On iPhone and iPad (TestFlight build 10 onward) it stores the bid sheet where iOS leaves it out of iCloud backup, and removes the copy earlier versions left in the backed-up folder the first time you open it. Earlier Android and iOS versions allowed it, which meant your phone or tablet could include the app's data in your own Google or iCloud backup (never in anything of mine).</p>
     <p>If you choose to send me a screenshot, a bid sheet, or other feedback, I receive what you sent and use it only to help you and improve BidVision. It sits wherever you sent it (for example, in my email). Ask me and I will delete what I can.</p>
 
     <h2 class="section"><span class="num">2.</span>Signing up and the mailing list</h2>
@@ -129,7 +129,7 @@
     <h2 class="section"><span class="num">4.</span>Mobile (iPhone, iPad, Android)</h2>
     <ul class="body">
       <li><strong>Android:</strong> the Android app is a file you download from GitHub and install yourself. It is not distributed through the Google Play Store.</li>
-      <li><strong>iPhone / iPad:</strong> there is no iPhone or iPad version available right now. During the beta, the iOS version was delivered through <strong>Apple's TestFlight</strong> using a public join link. I did not collect your Apple ID. Information Apple collected through TestFlight (such as your email, device details, and crash and usage data) sits with Apple under <strong>Apple's</strong> privacy policy. Because the link was public, Apple does not tell me who joined.</li>
+      <li><strong>iPhone / iPad:</strong> the iOS version is delivered through <strong>Apple's TestFlight</strong>, using a public join link shown on the download page after you sign up. I do not collect your Apple ID. When you use TestFlight, Apple collects information (such as your email, device details, and crash and usage data) under <strong>Apple's</strong> privacy policy; it sits with Apple. Because the link is public, Apple does not tell me who joined. Crash reports and any feedback you choose to send through TestFlight do reach me, without your identity attached. Tapping the TestFlight button is logged like any other download (your email, "ios", the time).</li>
     </ul>
 
     <h2 class="section"><span class="num">5.</span>Service providers</h2>
@@ -137,7 +137,7 @@
     <ul class="body">
       <li><strong>Google</strong>: Workspace, Sheets, Gmail and Apps Script for signup storage, the download log, and email; Google Fonts for website font delivery;</li>
       <li><strong>GitHub</strong>: website hosting and the app downloads;</li>
-      <li><strong>Apple</strong>: iOS beta distribution via TestFlight during the beta. Information collected through TestFlight remains with Apple under its own policy.</li>
+      <li><strong>Apple</strong>: iPhone and iPad distribution via TestFlight. Information collected through TestFlight stays with Apple under its own policy.</li>
     </ul>
     <p>Each handles data under its own privacy policy. I do not share your information with anyone else, and I never sell it.</p>
 

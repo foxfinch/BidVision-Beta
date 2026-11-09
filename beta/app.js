@@ -13,7 +13,8 @@ const GAS_URL = 'https://script.google.com/macros/s/AKfycbyjy2oY1J3wHCe1TUKbeEmW
 
 // Download URLs: current cut = v0.2.0-b10 on foxfinch/BidVision-Beta (published 2026-11-09).
 // Asset names read off the published release. b10 ships macOS (Apple Silicon + Intel),
-// Windows and Android only: no Linux, no iPhone or iPad.
+// Windows and Android here; iPhone and iPad come through the public TestFlight link
+// hardcoded in beta/index.html. No Linux.
 //
 // TO BUMP A RELEASE: change RELEASE below and nothing else. Every asset name derives from it.
 //
@@ -133,7 +134,6 @@ function highlightPlatform(platform) {
     if (el) el.style.display = on ? '' : 'none';
   };
   show('.smartscreen-warning', platform === 'windows');
-  show('#no-build-ios', platform === 'ios');
   show('#no-build-linux', platform === 'linux');
 }
 
@@ -217,7 +217,7 @@ function initDownloadTracking() {
         action: 'download',
         email: localStorage.getItem('bidvision_email') || '',
         platform: platform,
-        version: verMatch ? verMatch[1] : '',
+        version: verMatch ? verMatch[1] : (platform === 'ios' ? 'TestFlight' : ''),
       });
     });
   });

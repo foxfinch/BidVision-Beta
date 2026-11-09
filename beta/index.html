@@ -97,7 +97,7 @@
     <div id="state-downloads" class="state">
       <div class="card">
         <h2 class="card-title" id="downloads-title">Here's BidVision.</h2>
-        <p class="card-subtitle">Pick the device you'll run it on. This version (0.2.0-b10) works until November 20, 2027.</p>
+        <p class="card-subtitle">Pick the device you'll run it on. On Mac, Windows and Android this version (0.2.0-b10) works until November 20, 2027.</p>
 
         <h3 class="dl-section-head">On your computer</h3>
 
@@ -144,7 +144,7 @@
         </div>
 
         <p class="platform-note" id="no-build-linux" style="display:none; margin-top: 12px;">
-          <strong>There's no Linux or Chromebook version.</strong> BidVision runs on Mac, Windows and Android.
+          <strong>There's no Linux or Chromebook version.</strong> BidVision runs on Mac, Windows, Android, iPhone and iPad.
         </p>
 
         <h3 class="dl-section-head">On your phone or tablet</h3>
@@ -160,12 +160,17 @@
         </div>
 
         <div class="mobile-platform">
-          <div class="ios-invite">
-            <p><strong>iPhone &amp; iPad:</strong> not available right now.</p>
+          <a href="https://testflight.apple.com/join/Nv4ajVHu" class="download-btn" id="dl-ios" data-platform="ios" target="_blank" rel="noopener">
+            <span class="platform-icon">&#63743;</span>
+            <span class="platform-info">
+              <span class="platform-name">iPhone &amp; iPad</span>
+              <span class="platform-detail">Through Apple's free TestFlight app. Open this on the device you'll use.</span>
+            </span>
+          </a>
+          <div class="ios-invite" style="margin-top: 12px;">
+            <p>Install Apple's free <strong>TestFlight</strong> app first, then tap the button above <strong>on the iPhone or iPad you'll use</strong>. Tapping it on another device installs BidVision there instead.</p>
+            <p class="ios-invite-note">TestFlight keeps each version for 90 days. A new one goes up before this one runs out, and TestFlight offers the update.</p>
           </div>
-          <p class="platform-note" id="no-build-ios" style="display:none; margin-top: 12px;">
-            You're on an iPhone or iPad, which BidVision doesn't run on right now. It does run on a Mac, a Windows PC or an Android device.
-          </p>
         </div>
 
         <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 18px;">
@@ -182,7 +187,7 @@
           <button class="collapsible-toggle" id="install-toggle" type="button">
             <span class="install-toggle-text">
               <span class="install-toggle-title">First-time install instructions</span>
-              <span class="install-toggle-sub">New here, or the app won't open? Step by step for Mac, Windows and Android.</span>
+              <span class="install-toggle-sub">New here, or the app won't open? Step by step for Mac, Windows, iPhone, iPad and Android.</span>
             </span>
             <span class="arrow">&#9654;</span>
           </button>
@@ -202,6 +207,14 @@
               <li>Follow the installer. BidVision opens when it finishes, and lives in your Start Menu from then on.</li>
             </ol>
             <p>No <strong>Run anyway</strong> button? Right-click the <strong>.exe</strong> &rarr; <strong>Properties</strong> &rarr; check <strong>Unblock</strong> &rarr; <strong>OK</strong>, then run it again.</p>
+
+            <h4>iPhone &amp; iPad (TestFlight)</h4>
+            <ol>
+              <li>On the iPhone or iPad you'll use, install the free <strong>TestFlight</strong> app from the App Store.</li>
+              <li><em>On that same device,</em> tap the <strong>iPhone &amp; iPad</strong> button above (or open <a href="https://testflight.apple.com/join/Nv4ajVHu" target="_blank" rel="noopener">testflight.apple.com/join/Nv4ajVHu</a>).</li>
+              <li>TestFlight opens to BidVision. Tap <strong>Accept</strong>, then <strong>Install</strong>.</li>
+              <li>Open BidVision from your home screen. When TestFlight offers an update, tap <strong>Update</strong>.</li>
+            </ol>
 
             <h4>Android</h4>
             <ol>

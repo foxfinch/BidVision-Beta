@@ -123,7 +123,7 @@ function sendWelcomeEmail(name, email) {
 
       <p>Thanks for signing up. BidVision is a search tool for your bid sheet: it finds the trips that fit your schedule and preferences.</p>
 
-      <p>The downloads for Mac, Windows and Android are here: <a href="${CONFIG.DOWNLOAD_URL}" style="color: #8B5E3C;">bidvision.app/beta</a>. On another device, sign up again with the same email and the downloads open there too. This version works until November 20, 2027.</p>
+      <p>The downloads for Mac, Windows, Android, iPhone and iPad are here: <a href="${CONFIG.DOWNLOAD_URL}" style="color: #8B5E3C;">bidvision.app/beta</a>. On another device, sign up again with the same email and the downloads open there too. On Mac, Windows and Android this version works until November 20, 2027; on iPhone and iPad it comes through Apple's TestFlight app.</p>
 
       <p>To get your bid sheet, open <a href="${CONFIG.BIDSHEET_URL}" style="color: #8B5E3C;">PBS Bid Packets on Jetnet</a> (sign in if asked), open your base's Sequences for the month, then Download original file.</p>
 
@@ -141,8 +141,8 @@ function sendWelcomeEmail(name, email) {
     ``,
     `Thanks for signing up. BidVision is a search tool for your bid sheet: it finds the trips that fit your schedule and preferences.`,
     ``,
-    `The downloads for Mac, Windows and Android are here: ${CONFIG.DOWNLOAD_URL}`,
-    `On another device, sign up again with the same email and the downloads open there too. This version works until November 20, 2027.`,
+    `The downloads for Mac, Windows, Android, iPhone and iPad are here: ${CONFIG.DOWNLOAD_URL}`,
+    `On another device, sign up again with the same email and the downloads open there too. On Mac, Windows and Android this version works until November 20, 2027; on iPhone and iPad it comes through Apple's TestFlight app.`,
     ``,
     `To get your bid sheet, open PBS Bid Packets on Jetnet (sign in if asked), open your base's Sequences for the month, then Download original file:`,
     CONFIG.BIDSHEET_URL,
