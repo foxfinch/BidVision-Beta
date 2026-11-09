@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Keep me posted | BidVision</title>
+  <title>Download BidVision</title>
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -42,7 +42,7 @@
     <!-- Hero -->
     <header class="hero">
       <img src="assets/icon.png" alt="BidVision" class="hero-icon">
-      <h1 class="hero-title">The BidVision beta has wrapped up.</h1>
+      <h1 class="hero-title">Download BidVision</h1>
       <span class="privacy-badge">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         Your bid sheets stay on your device.
@@ -52,8 +52,8 @@
     <!-- State: Registration Form -->
     <div id="state-register" class="state">
       <div class="card">
-        <h2 class="card-title">Keep me posted</h2>
-        <p class="card-subtitle">The beta has wrapped up and there's nothing to download right now. Leave your details and I'll write if there's ever something new worth trying.</p>
+        <h2 class="card-title">Sign up to download</h2>
+        <p class="card-subtitle">BidVision is a search tool for your bid sheet. It finds the trips that fit your schedule and preferences. Sign up and the downloads open right here.</p>
 
         <form id="register-form">
           <div class="form-group">
@@ -83,117 +83,21 @@
             </select>
           </div>
 
-          <div class="form-group">
-            <label class="form-label">Platform</label>
-            <div class="radio-group">
-              <div class="radio-option">
-                <input type="radio" name="platform" id="plat-mac-arm" value="macOS (Apple Silicon)" required>
-                <label for="plat-mac-arm">Mac (Apple Silicon)</label>
-              </div>
-              <div class="radio-option">
-                <input type="radio" name="platform" id="plat-mac-intel" value="macOS (Intel)">
-                <label for="plat-mac-intel">Mac (Intel)</label>
-              </div>
-              <div class="radio-option">
-                <input type="radio" name="platform" id="plat-windows" value="Windows">
-                <label for="plat-windows">Windows</label>
-              </div>
-              <div class="radio-option">
-                <input type="radio" name="platform" id="plat-linux" value="Linux / ChromeOS">
-                <label for="plat-linux">Linux / Chromebook</label>
-              </div>
-              <div class="radio-option">
-                <input type="radio" name="platform" id="plat-android" value="Android">
-                <label for="plat-android">Android</label>
-              </div>
-              <div class="radio-option">
-                <input type="radio" name="platform" id="plat-ios" value="iPhone / iPad">
-                <label for="plat-ios">iPhone / iPad</label>
-              </div>
-            </div>
-            <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 8px;">
-              <strong>Not sure which Mac?</strong> &#63743; menu &rarr; About This Mac. M1/M2/M3/M4 = Apple Silicon. Anything else = Intel.
-            </p>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="reg-phone">Phone <span class="optional">(optional)</span></label>
-            <input type="tel" id="reg-phone" class="form-input" autocomplete="tel" placeholder="For group chat updates">
-          </div>
-
-          <div class="form-group">
-            <div class="checkbox-group">
-              <input type="checkbox" id="reg-sms">
-              <label for="reg-sms">Add me to the beta group chat (iMessage, standard messaging rates apply)</label>
-            </div>
-          </div>
-
           <p style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 20px;">
-            Name, email and base are all that's kept, only so I can write you. They won't be shared.
+            Signing up means occasional emails about BidVision. Unsubscribe any time. I never sell your details or give them to advertisers. <a href="/privacy/">Privacy</a>
           </p>
 
-          <button type="submit" class="btn btn-primary" id="register-btn">Add me to the list</button>
+          <button type="submit" class="btn btn-primary" id="register-btn">Sign up and download</button>
           <p id="register-error" class="error-text"></p>
         </form>
       </div>
-
-      <button class="toggle-link" id="show-code-entry" hidden>Already have a code?</button>
     </div>
 
-    <!-- State: Registered (waiting for code) -->
-    <div id="state-registered" class="state">
-      <div class="card">
-        <div class="message">
-          <div class="message-icon">&#9993;</div>
-          <p class="message-title" id="registered-title">You're on the list!</p>
-          <p class="message-text" id="registered-text">Check your email (and spam folder) for your access code.</p>
-        </div>
-
-        <div class="code-entry-inline">
-          <h3 style="font-size: 0.9375rem; font-weight: 600; margin-bottom: 12px;">Enter your access code</h3>
-          <form id="code-form-registered">
-            <div class="form-group" style="margin-bottom: 12px;">
-              <input type="text" class="form-input code-input" placeholder="e.g. BID-XXXX" autocomplete="off" spellcheck="false" style="text-transform: uppercase; letter-spacing: 0.05em;">
-            </div>
-            <button type="submit" class="btn btn-primary">Unlock Downloads</button>
-            <p class="error-text code-error"></p>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <!-- State: Code Entry (returning user / shared code) -->
-    <div id="state-code" class="state">
-      <div class="card">
-        <h2 class="card-title">Welcome back</h2>
-        <p class="card-subtitle">Enter your email and access code to unlock downloads.</p>
-
-        <form id="code-form-direct">
-          <div class="form-group">
-            <label class="form-label" for="code-email">Email</label>
-            <input type="email" id="code-email" class="form-input" required autocomplete="email" placeholder="The email you registered with">
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="code-direct">Access Code</label>
-            <input type="text" id="code-direct" class="form-input code-input" required placeholder="e.g. BID-XXXX" autocomplete="off" spellcheck="false" style="text-transform: uppercase; letter-spacing: 0.05em;">
-          </div>
-          <button type="submit" class="btn btn-primary">Unlock Downloads</button>
-          <p id="code-direct-error" class="error-text"></p>
-        </form>
-      </div>
-
-      <button class="toggle-link" id="show-register">New here? Register instead</button>
-    </div>
-
-    <!-- State: Authenticated (downloads) -->
+    <!-- State: Downloads (unlocked by signing up) -->
     <div id="state-downloads" class="state">
       <div class="card">
-        <h2 class="card-title">You're in.</h2>
-        <p class="card-subtitle">Pick the device you'll run BidVision on.</p>
-
-        <div class="platform-note">
-          <strong>Best on desktop and tablet</strong> &mdash; that's where there's room for your whole ranked list at a glance. It runs on your phone too, but that's where we most want your read: it's new, and we're deciding how far to take it. If you try it on a phone, tell us &mdash; is it worth having, and what's essential to see on a small screen?
-        </div>
+        <h2 class="card-title" id="downloads-title">Here's BidVision.</h2>
+        <p class="card-subtitle">Pick the device you'll run it on. This version (0.2.0-b10) works until November 20, 2027.</p>
 
         <h3 class="dl-section-head">On your computer</h3>
 
@@ -202,7 +106,7 @@
             <span class="platform-icon">&#63743;</span>
             <span class="platform-info">
               <span class="platform-name">macOS (Apple Silicon)</span>
-              <span class="platform-detail">M1, M2, M3, M4 Macs &mdash; 2020 or newer</span>
+              <span class="platform-detail">M1, M2, M3, M4 Macs, 2020 or newer</span>
             </span>
           </a>
           <a href="#" class="download-btn" id="dl-mac-intel" data-platform="mac-intel">
@@ -220,27 +124,11 @@
               <span class="platform-detail">Windows 10 or later</span>
             </span>
           </a>
-
-          <a href="#" class="download-btn" id="dl-linux" data-platform="linux">
-            <span class="platform-icon">&#128039;</span>
-            <span class="platform-info">
-              <span class="platform-name">Linux / Chromebook (amd64)</span>
-              <span class="platform-detail">Debian/Ubuntu .deb &mdash; most Intel/AMD PCs &amp; Chromebooks (Crostini)</span>
-            </span>
-          </a>
-
-          <a href="#" class="download-btn" id="dl-linux-arm64" data-platform="linux-arm64">
-            <span class="platform-icon">&#128039;</span>
-            <span class="platform-info">
-              <span class="platform-name">Linux / Chromebook (arm64)</span>
-              <span class="platform-detail">For ARM machines &mdash; e.g. ARM Chromebooks (Lenovo Duet)</span>
-            </span>
-          </a>
         </div>
 
         <div class="smartscreen-warning" style="margin-top: 12px; padding: 14px 16px; background: rgba(201, 138, 0, 0.08); border: 1px solid rgba(201, 138, 0, 0.25); border-radius: 8px; font-size: 0.8125rem; line-height: 1.6; display: none;">
           <strong style="color: var(--text-primary);">&#9888; Windows SmartScreen may show a warning.</strong>
-          <span style="color: var(--text-secondary);">Click <strong>More info</strong>, then <strong>Run anyway</strong>. This is normal for new apps without an extended trust history. You only need to do this once.</span>
+          <span style="color: var(--text-secondary);">Click <strong>More info</strong>, then <strong>Run anyway</strong>. This is normal for new apps without a long trust history. You only need to do this once.</span>
         </div>
 
         <div class="mac-help">
@@ -255,43 +143,37 @@
           </div>
         </div>
 
-        <div class="linux-help">
-          <button class="toggle-link" id="linux-help-toggle" style="margin-top: 0; font-size: 0.8125rem;">Not sure which Linux build &mdash; amd64 or arm64?</button>
-          <div id="linux-help-content" class="collapsible-content" style="margin-top: 8px; text-align: left;">
-            <p><strong>If you're unsure, choose amd64.</strong> It's the right one for almost every laptop, desktop, and Chromebook &mdash; anything with an <strong>Intel or AMD</strong> chip.</p>
-            <p>Choose <strong>arm64</strong> only if you have an <strong>ARM</strong> device &mdash; for example a Lenovo Duet or another ARM-based Chromebook.</p>
-            <p style="color: var(--text-muted);">To be sure, open a terminal (on a Chromebook, the Linux terminal) and run <code>uname -m</code>: <code>x86_64</code> means <strong>amd64</strong>; <code>aarch64</code> means <strong>arm64</strong>.</p>
-          </div>
-        </div>
+        <p class="platform-note" id="no-build-linux" style="display:none; margin-top: 12px;">
+          <strong>There's no Linux or Chromebook version.</strong> BidVision runs on Mac, Windows and Android.
+        </p>
 
         <h3 class="dl-section-head">On your phone or tablet</h3>
-        <p class="mobile-hint" id="mobile-hint" style="display:none;">You're on a phone or tablet &mdash; here's how to install.</p>
 
-        <!-- Android — sideload APK (b8 published; direct download). -->
         <div class="mobile-platform">
           <a href="#" class="download-btn" id="dl-android" data-platform="android">
             <span class="platform-icon">&#129302;</span>
             <span class="platform-info">
               <span class="platform-name">Android phone &amp; tablet</span>
-              <span class="platform-detail">Installs from a file (.apk) &mdash; not on the Play Store during beta</span>
+              <span class="platform-detail">Installs from a file (.apk), not from the Play Store</span>
             </span>
           </a>
         </div>
 
-        <!-- iPhone / iPad — public TestFlight link (build 8 approved for external testing 2026-06-13) -->
         <div class="mobile-platform">
-          <a href="https://testflight.apple.com/join/Nv4ajVHu" class="download-btn" id="dl-ios" data-platform="ios" target="_blank" rel="noopener">
-            <span class="platform-icon">&#63743;</span>
-            <span class="platform-info">
-              <span class="platform-name">iPhone &amp; iPad</span>
-              <span class="platform-detail">Through Apple&rsquo;s free TestFlight app &mdash; open this on the device you&rsquo;ll use</span>
-            </span>
-          </a>
-          <div class="ios-invite" style="margin-top: 12px;">
-            <p>iOS runs through Apple&rsquo;s free <strong>TestFlight</strong> app. Tap the button above <strong>on your iPhone or iPad</strong> to join &mdash; no invite to wait for.</p>
-            <p class="ios-invite-note">Opening the link on a different device installs BidVision there, not on your iPad &mdash; so tap it on the device you actually want it on. Full step-by-step is in the install guide below.</p>
+          <div class="ios-invite">
+            <p><strong>iPhone &amp; iPad:</strong> not available right now.</p>
           </div>
+          <p class="platform-note" id="no-build-ios" style="display:none; margin-top: 12px;">
+            You're on an iPhone or iPad, which BidVision doesn't run on right now. It does run on a Mac, a Windows PC or an Android device.
+          </p>
         </div>
+
+        <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 18px;">
+          Getting your bid sheet: on Jetnet, open <a href="https://jetnet.aa.com/sites/inflight/SitePageModern/335174/current-archive-bid-sheets" target="_blank" rel="noopener">PBS Bid Packets</a> (sign in if asked), open your base's Sequences for the month, then Download original file. <a href="/start">More in Getting Started</a>.
+        </p>
+        <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 8px;">
+          Each download is logged against your email, with the time, device and version, so I know what got installed. <a href="/privacy/">Privacy</a>
+        </p>
       </div>
 
       <!-- Install instructions -->
@@ -300,47 +182,32 @@
           <button class="collapsible-toggle" id="install-toggle" type="button">
             <span class="install-toggle-text">
               <span class="install-toggle-title">First-time install instructions</span>
-              <span class="install-toggle-sub">New here, or the app won't open? Step-by-step for Mac, Windows, Linux, iPhone &amp; Android.</span>
+              <span class="install-toggle-sub">New here, or the app won't open? Step by step for Mac, Windows and Android.</span>
             </span>
             <span class="arrow">&#9654;</span>
           </button>
           <div class="collapsible-content" id="install-content">
             <h4>macOS</h4>
-            <p>BidVision is signed and notarized by Apple, so it opens like a normal app &mdash; no scary warnings.</p>
+            <p>BidVision is signed and notarized by Apple, so it opens like a normal app.</p>
             <ol>
               <li>Unzip the downloaded file, then drag <strong>BidVision</strong> into your <strong>Applications</strong> folder.</li>
-              <li>Double-click <strong>BidVision</strong>. The first time, macOS may ask <em>&ldquo;BidVision was downloaded from the Internet &mdash; are you sure you want to open it?&rdquo;</em> &mdash; click <strong>Open</strong>. That's it.</li>
+              <li>Double-click <strong>BidVision</strong>. The first time, macOS may ask whether you're sure you want to open an app downloaded from the Internet. Click <strong>Open</strong>. That's it.</li>
             </ol>
-            <p>If macOS ever says it &ldquo;can't be opened&rdquo;: open the <strong>Apple menu &rarr; System Settings &rarr; Privacy &amp; Security</strong>, scroll to the bottom, click <strong>Open Anyway</strong>, then confirm with your password. <em>(On macOS Sequoia the old right-click &rarr; Open trick no longer works &mdash; this is the new path.)</em></p>
+            <p>If macOS ever says it &ldquo;can't be opened&rdquo;: open the <strong>Apple menu &rarr; System Settings &rarr; Privacy &amp; Security</strong>, scroll to the bottom, click <strong>Open Anyway</strong>, then confirm with your password. <em>(On macOS Sequoia the old right-click &rarr; Open trick no longer works, so this is the path now.)</em></p>
 
             <h4>Windows</h4>
             <ol>
               <li>Run the downloaded installer (<strong>.exe</strong>).</li>
-              <li>If <strong>SmartScreen</strong> shows &ldquo;Windows protected your PC,&rdquo; click <strong>More info</strong>, then <strong>Run anyway</strong>. This appears because the app is new &mdash; it's <strong>not</strong> a virus warning.</li>
-              <li>Follow the installer; BidVision opens when it finishes, and lives in your Start Menu from then on.</li>
+              <li>If <strong>SmartScreen</strong> shows &ldquo;Windows protected your PC,&rdquo; click <strong>More info</strong>, then <strong>Run anyway</strong>. This appears because the app is new. It's <strong>not</strong> a virus warning.</li>
+              <li>Follow the installer. BidVision opens when it finishes, and lives in your Start Menu from then on.</li>
             </ol>
             <p>No <strong>Run anyway</strong> button? Right-click the <strong>.exe</strong> &rarr; <strong>Properties</strong> &rarr; check <strong>Unblock</strong> &rarr; <strong>OK</strong>, then run it again.</p>
-
-            <h4>Linux / Chromebook</h4>
-            <ol>
-              <li><strong>Chromebook only:</strong> turn on Linux first &mdash; <strong>Settings &rarr; About ChromeOS &rarr; Developers &rarr; Linux development environment &rarr; Set up</strong> (one-time, a couple of minutes), then move the <code>.deb</code> into your <strong>Linux files</strong> folder.</li>
-              <li>Double-click the <strong>.deb</strong> and choose <strong>Install</strong> &mdash; or in a terminal run <code>sudo apt install ./BidVision*.deb</code>.</li>
-              <li>Launch BidVision from your app launcher.</li>
-            </ol>
-
-            <h4>iPhone &amp; iPad (TestFlight)</h4>
-            <ol>
-              <li>On the iPhone or iPad you'll use, install the free <strong>TestFlight</strong> app from the App Store.</li>
-              <li><em>On that same device,</em> tap the <strong>iPhone &amp; iPad</strong> button in the &ldquo;On your phone or tablet&rdquo; section above (or open <a href="https://testflight.apple.com/join/Nv4ajVHu" target="_blank" rel="noopener">testflight.apple.com/join/Nv4ajVHu</a>). Tapping it on a different device installs BidVision <em>there</em> &mdash; so use the one you want it on.</li>
-              <li>TestFlight opens to BidVision &mdash; tap <strong>Accept</strong>, then <strong>Install</strong>.</li>
-              <li>Open BidVision from your home screen. New versions arrive through TestFlight &mdash; tap <strong>Update</strong> when prompted.</li>
-            </ol>
 
             <h4>Android</h4>
             <ol>
               <li>Tap <strong>Android phone &amp; tablet</strong> above to download the <code>.apk</code> file.</li>
-              <li>Open the downloaded file &mdash; from the download notification, or your <strong>Files / Downloads</strong> app.</li>
-              <li>Android will ask permission to install from this source &mdash; tap <strong>Settings</strong>, turn on <strong>Allow from this source</strong>, then go back. <em>(On Android&nbsp;15 this is granted per-app &mdash; allow it for the app you downloaded with, usually your browser or Files app.)</em></li>
+              <li>Open the downloaded file, from the download notification or your <strong>Files / Downloads</strong> app.</li>
+              <li>Android will ask permission to install from this source. Tap <strong>Settings</strong>, turn on <strong>Allow from this source</strong>, then go back. <em>(On Android&nbsp;15 this is granted per app: allow it for the app you downloaded with, usually your browser or Files app.)</em></li>
               <li>Tap <strong>Install</strong>, then <strong>Open</strong>.</li>
               <li>To update later, download the new <code>.apk</code> and install it over the top.</li>
             </ol>
@@ -348,43 +215,23 @@
         </div>
       </div>
 
-      <!-- Feedback -->
+      <!-- Feedback: one line, no form -->
       <div class="card">
-        <h2 class="card-title">Found something?</h2>
-        <p class="card-subtitle">Bugs, confusion, or ideas &mdash; we want to hear it all.</p>
-        <div class="feedback-links">
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdBkgz7FIurBAd6s-l1DTJyvy3z2lsgqbXn7fsNNdzw9eWoYQ/viewform" target="_blank" class="feedback-link">
-            &#128221; Report an issue
-          </a>
-        </div>
-      </div>
-
-      <p class="version-info">
-        Bookmark this page &mdash; updates will appear here.
-      </p>
-    </div>
-
-    <!-- State: Expired -->
-    <div id="state-expired" class="state">
-      <div class="card">
-        <div class="message">
-          <div class="message-icon">&#128587;</div>
-          <p class="message-title">The beta period has ended.</p>
-          <p class="message-text">Thanks for testing BidVision.</p>
-        </div>
+        <h2 class="card-title">Tell me how it went</h2>
+        <p class="card-subtitle">A quick note to <a href="mailto:hello@bidvision.app">hello@bidvision.app</a> helps a lot: did it install, did your bid sheet load, did it find trips that fit, was it useful? Even a one-word answer helps.</p>
       </div>
     </div>
 
     <!-- Why BidVision (marketing — below the sign-up + downloads) -->
     <section class="why-section">
-      <h2 class="why-title">What BidVision did</h2>
-      <p class="why-lead">Your bid sheet has over a thousand sequences. From April to October 2026, a small group of crew used BidVision to find the ones that actually fit their lives.</p>
+      <h2 class="why-title">What BidVision does</h2>
+      <p class="why-lead">Your bid sheet has over a thousand sequences. BidVision searches them and finds the ones that fit your schedule and your preferences.</p>
 
       <div class="why-features">
         <div class="why-feature">
           <div class="why-feature-text">
             <h3>Your schedule, built around your life</h3>
-            <p>You marked the days that mattered (a wedding, a trip, your kid's recital) and BidVision found trips that worked around them. Or you prioritized the trips you liked and saw which days they fell on. It worked either way.</p>
+            <p>Mark the days that matter (a wedding, a trip, your kid's recital) and BidVision finds trips that work around them. Or start from the trips you like and see which days they fall on. It works either way.</p>
           </div>
           <div class="why-feature-media">
             <img class="shot" src="/img/availability.png" alt="Availability: a weekly template plus a calendar of can-work and can't-work windows" loading="lazy">
@@ -394,7 +241,7 @@
         <div class="why-feature flip">
           <div class="why-feature-text">
             <h3>Your preferences, in your order</h3>
-            <p>Every filter was a preference you could weight, not just a checkbox. You dragged them into a priority order and BidVision broke ties the way you would: your must-haves moved a trip further than your nice-to-haves.</p>
+            <p>Every filter is a preference you can weight, not just a checkbox. Drag them into a priority order and BidVision breaks ties the way you would: your must-haves move a trip further than your nice-to-haves.</p>
           </div>
           <div class="why-feature-media">
             <img class="shot" src="/img/filter-ranking.png" alt="Filter Ranking: active filters dragged into priority order" loading="lazy" style="max-width: 360px;">
@@ -403,8 +250,8 @@
 
         <div class="why-feature">
           <div class="why-feature-text">
-            <h3>Soft filters found hidden gems</h3>
-            <p>A hard yes-or-no filter hides everything else. BidVision let you prefer, allow, or exclude, so trips that almost matched still showed up, scored and ranked. You might have found a sequence you'd never have seen otherwise.</p>
+            <h3>Soft filters find hidden gems</h3>
+            <p>A hard yes-or-no filter hides everything else. BidVision lets you prefer, allow, or exclude, so trips that almost match still show up, scored and ranked. You might find a sequence you'd never have seen otherwise.</p>
           </div>
           <div class="why-feature-media">
             <img class="shot" src="/img/preferences.png" alt="Prefer, Allow, and Exclude controls on a filter" loading="lazy" style="max-width: 320px;">
@@ -412,7 +259,7 @@
         </div>
       </div>
 
-      <p class="why-bottom">BidVision was a pre-bid research tool: something to explore your options with before the bidding window opened. If there's ever something new worth trying, I'll write.</p>
+      <p class="why-bottom">Load your bid sheet and see your month sorted your way, all on your own device.</p>
     </section>
 
   </div>
@@ -421,7 +268,7 @@
   <footer class="footer">
     BidVision is not affiliated with or endorsed by any airline.<br>
     Bid sheets, availability and preferences are read on your device and never uploaded.<br>
-    The only things stored elsewhere are the name, email and base you typed into the signup form.<br>
+    The only things stored elsewhere are your signup details (name, email, base and the device the page detected) and a log of your downloads.<br>
     <br>
     &copy; 2026 FoxFinch Adaptations LLC. BidVision is a product of FoxFinch Adaptations LLC.<br>
     <a href="/privacy/">Privacy Policy</a>

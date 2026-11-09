@@ -7,7 +7,7 @@
   <!-- Screenshots in /img are the SYNTHETIC July 2026 set on the final (SPEC-037) UI
        (source: BidVision-Product/marketing/screenshots/2026-06-10-final-synthetic/).
        Real-data pre-publish blocker is CLEARED. -->
-  <meta name="description" content="A record of how BidVision worked: it read your bid sheet, took your availability, and ranked trips by what mattered to you. The beta has ended.">
+  <meta name="description" content="How BidVision works: get your bid sheet from Jetnet, load it, set your availability, and BidVision ranks the trips by what matters to you.">
   <link rel="icon" href="/beta/assets/icon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -89,7 +89,7 @@
       <a class="brand" href="/"><span class="brand-bid">BID</span><span class="brand-vision">VISION</span></a>
       <div class="nav-links">
         <a href="/">Home</a>
-        <a class="btn" href="/beta">Keep me posted</a>
+        <a class="btn" href="/beta">Download</a>
       </div>
     </div>
   </nav>
@@ -97,74 +97,73 @@
   <main class="doc">
     <header class="doc-head">
       <h1>Getting Started</h1>
-      <p class="lede">The beta has ended, and there is nothing to download right now. This page is kept as a record of how BidVision worked.</p>
-      <p class="lede">BidVision turned your bid sheet into a ranked list of trips, sorted by what mattered to you. Here is how it worked, in five minutes.</p>
+      <p class="lede">BidVision turns your bid sheet into a ranked list of trips, sorted by what matters to you. Here is how it works, in five minutes. If you don't have it yet, <a href="/beta">sign up to download</a>.</p>
     </header>
 
     <section class="step">
-      <h2><span class="num">1</span> Where your bid sheet came from</h2>
-      <p>Bid sheets lived in Crew Portal. You opened Crew Portal and <strong>logged in first</strong>, then went to <strong>Departments &rarr; Crew Planning &rarr; Current Bid Sheets</strong>. (A direct link before you were logged in just landed you on the portal home.) You downloaded the PDF for the period you were bidding.</p>
+      <h2><span class="num">1</span> Get your bid sheet</h2>
+      <p>Bid sheets are on Jetnet. Open the <a href="https://jetnet.aa.com/sites/inflight/SitePageModern/335174/current-archive-bid-sheets" target="_blank" rel="noopener"><strong>PBS Bid Packets</strong></a> page and sign in if asked. Open your base's <strong>Sequences</strong> for the month, then choose <strong>Download original file</strong>. That PDF is what BidVision reads.</p>
     </section>
 
     <section class="step">
-      <h2><span class="num">2</span> Loading your bid sheet</h2>
-      <p>You opened BidVision and loaded that bid sheet PDF. Your bid sheets stayed on your device.</p>
+      <h2><span class="num">2</span> Load your bid sheet</h2>
+      <p>Open BidVision and load that bid sheet PDF. Your bid sheets stay on your device.</p>
       <img class="shot" src="/img/hero.png" alt="BidVision showing a bid sheet ranked by preference" loading="eager">
     </section>
 
     <section class="step">
       <div class="callout">
         <h2><span class="num">!</span> The one thing to know first</h2>
-        <p>BidVision preferences were <strong>soft</strong>. They <em>ranked</em> trips: they didn't bid for you and they weren't PBS rules. Because they were soft, a great pairing just outside your rules still showed up, ranked, instead of vanishing, so you saw trips you'd never catch with a hard filter. "Exclude" meant "push this down my list," not "I'll never get it." You could set things up freely to explore; your actual PBS bid was still yours to write.</p>
+        <p>BidVision preferences are <strong>soft</strong>. They <em>rank</em> trips in your search; they aren't PBS preferences, and nothing is sent to PBS. Because they're soft, a great pairing just outside your rules still shows up, ranked, instead of vanishing, so you see trips you'd never catch with a hard filter. "Exclude" means "push this down my list." Set things up freely and explore.</p>
       </div>
     </section>
 
     <section class="step">
-      <h2><span class="num">3</span> Setting your Availability: your week, then the month</h2>
-      <p>The Availability tray had two connected parts.</p>
+      <h2><span class="num">3</span> Set your Availability: your week, then the month</h2>
+      <p>The Availability tray has two connected parts.</p>
 
       <h3>Template Week: your recurring pattern</h3>
-      <p>You dragged the time windows you <em>could</em> work (Prefer, green) and <em>couldn't</em> (Exclude, red) across a typical Sun&ndash;Sat week. These were <em>time windows</em>, not whole days, so you could say things like "Tuesday nights off" or "free Wednesday afternoon through Friday morning." This was your baseline. It carried across every bid, so you set it once.</p>
+      <p>Drag the time windows you <em>can</em> work (Prefer, green) and <em>can't</em> (Exclude, red) across a typical Sun&ndash;Sat week. These are <em>time windows</em>, not whole days, so you can say things like "Tuesday nights off" or "free Wednesday afternoon through Friday morning." This is your baseline. It carries over every month, so you set it once.</p>
       <img class="shot" src="/img/availability-template.png" alt="Template week with can-work and can't-work time windows" loading="lazy">
 
       <h3>Month calendar: this bid's actual dates</h3>
-      <p>The calendar started pre-filled from your template. For any date that was different this month (a trip you were already covering, a one-off day you needed), you clicked it and adjusted. A change on the calendar overrode the template for that date only.</p>
+      <p>The calendar starts pre-filled from your template. For any date that's different this month (a trip you're already covering, a one-off day you need), click it and adjust. A change on the calendar overrides the template for that date only.</p>
       <img class="shot" src="/img/availability-calendar.png" alt="Month calendar with per-day availability" loading="lazy">
 
-      <p>BidVision then scored every trip by how well it fit (by the hour, not just the day), so the trips that worked for your real schedule rose to the top.</p>
+      <p>BidVision then scores every trip by how well it fits (by the hour, not just the day), so the trips that work for your real schedule rise to the top.</p>
     </section>
 
     <section class="step">
-      <h2><span class="num">4</span> Shaping the ranking with Prefer / Allow / Exclude</h2>
-      <p>On any filter, you placed each option on a spectrum: <strong>Prefer</strong> = your ideal (pull it to the top), <strong>Allow</strong> = good with you (a lighter nudge up), left untouched meant neutral (no opinion either way), <strong>Exclude</strong> = a negative (push it down). With a few stacked, the list reordered to match how you actually thought about your month.</p>
+      <h2><span class="num">4</span> Shape the ranking with Prefer / Allow / Exclude</h2>
+      <p>On any filter, place each option on a spectrum: <strong>Prefer</strong> = your ideal (pull it to the top), <strong>Allow</strong> = good with you (a lighter nudge up), left untouched means neutral (no opinion either way), <strong>Exclude</strong> = a negative (push it down). With a few stacked, the list reorders to match how you actually think about your month.</p>
       <img class="shot narrow" src="/img/preferences.png" alt="Prefer, Allow, and Exclude controls on a filter" loading="lazy">
     </section>
 
     <section class="step">
-      <h2><span class="num">5</span> Filter Ranking: which preferences mattered most</h2>
-      <p>Once you'd set a few preferences, some mattered more than others. <strong>Filter Ranking</strong> let you drag your active filters into priority order, and BidVision weighted the scoring to match: your top preference moved trips further than the ones beneath it. It wasn't another filter; it was how BidVision broke ties when trips competed for the top of your list.</p>
+      <h2><span class="num">5</span> Filter Ranking: which preferences matter most</h2>
+      <p>Once you've set a few preferences, some matter more than others. <strong>Filter Ranking</strong> lets you drag your active filters into priority order, and BidVision weights the scoring to match: your top preference moves trips further than the ones beneath it. It isn't another filter; it's how BidVision breaks ties when trips compete for the top of your list.</p>
       <img class="shot narrow" src="/img/filter-ranking.png" alt="Filter Ranking: active filters dragged into priority order" loading="lazy">
     </section>
 
     <section class="step">
       <h2><span class="num">6</span> Discover vs. Strict</h2>
       <ul>
-        <li><strong>Discover</strong> (default): showed <em>all</em> trips, ranked, with nothing hidden. This is where you caught the great trips that sat just outside your rules.</li>
-        <li><strong>Strict</strong>: a hard filter that hid trips that broke an Exclude. You used it when you knew exactly what you wanted.</li>
+        <li><strong>Discover</strong> (default): shows <em>all</em> trips, ranked, with nothing hidden. This is where you catch the great trips that sit just outside your rules.</li>
+        <li><strong>Strict</strong>: a hard filter that hides trips that break an Exclude. Use it when you know exactly what you want.</li>
       </ul>
       <img class="shot" src="/img/discover-strict.png" alt="Discover and Strict mode toggle" loading="lazy" style="max-width:460px;">
     </section>
 
     <section class="step">
-      <h2><span class="num">7</span> Researching a trade (ETB / TTS)</h2>
-      <p>You used the <strong>Date Range</strong> filter to narrow to the specific days you were trying to cover, and BidVision surfaced every trip touching that window.</p>
+      <h2><span class="num">7</span> Looking up trips for a trade (ETB / TTS)</h2>
+      <p>Use the <strong>Date Range</strong> filter to narrow to the specific days you're trying to cover, and BidVision surfaces every trip touching that window.</p>
       <img class="shot narrow" src="/img/date-range.png" alt="Date Range filter set to a window" loading="lazy">
     </section>
 
     <section class="step">
-      <h2>Your bid sheets stayed on your device</h2>
-      <p>Bid sheets, availability and preferences were read on your device and never uploaded. The only things stored elsewhere are the name, email and base you typed into the signup form.</p>
-      <p>If there's ever something new worth trying, I'll write. You can <a href="/continue">keep me posted</a>.</p>
+      <h2>Your bid sheets stay on your device</h2>
+      <p>Bid sheets, availability and preferences are read on your device and never uploaded. The only things stored elsewhere are your signup details (name, email, base and the device the page detected) and a log of your downloads.</p>
+      <p>Tried it? A quick note to <a href="mailto:hello@bidvision.app">hello@bidvision.app</a> helps a lot: did it install, did your bid sheet load, did it find trips that fit, was it useful? Even a one-word answer helps.</p>
     </section>
   </main>
 

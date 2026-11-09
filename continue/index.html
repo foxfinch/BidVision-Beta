@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Beta ended | BidVision</title>
+  <title>Your copy has expired | BidVision</title>
   <!-- PERMANENT SLUG: this page must always live at exactly /continue.
        It is the stable indirection target the desktop app links to from its
        beta-expiry banner and "Beta Build Expired" modal (https://bidvision.app/continue).
        The app's link is frozen per-build, so the post-expiry destination is decided
        HERE, not by shipping a new build.
-       Current behavior: WIND-DOWN MODE (the beta has ended).
+       Current behavior: CURRENT MODE (0.2.0-b10 available, sign up to download).
        At public launch, swap to LIVE MODE (see commented block at the bottom of <main>). -->
-  <meta name="description" content="The BidVision beta has ended. If the app stopped opening, that is the built-in expiry date rather than anything breaking, and there is nothing you need to do.">
+  <meta name="description" content="If BidVision stopped opening, that is the built-in expiry date on the older version. A working copy for Mac, Windows and Android runs until November 2027. Sign up to download it.">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -92,45 +92,44 @@
     <div class="nav-inner">
       <a class="brand" href="/"><span class="brand-bid">BID</span><span class="brand-vision">VISION</span></a>
       <div class="nav-links">
-        <a class="btn" href="/beta">Keep me posted</a>
+        <a class="btn" href="/beta">Download</a>
       </div>
     </div>
   </nav>
 
   <main class="doc">
-    <!-- ===== WIND-DOWN MODE (current, 2026-10-12) =====
-         Where the in-app "build expired" wall lands. Two readers: a tester whose app just
-         stopped, and anyone else who finds the link. Testers get the answer and an explicit
-         "nothing to do"; the signup link is scoped to newcomers so testers aren't told to
-         re-register. Voice matches the wind-down email sent 2026-10-12. -->
+    <!-- ===== CURRENT MODE (2026-11-09, 0.2.0-b10 available) =====
+         Where the in-app "build expired" wall lands. Main reader: someone whose older copy
+         (b9 or earlier) just stopped opening. Tell them why, then send them to sign up and
+         download b10, which runs until 2027-11-20. Testers already on the list are told that
+         signing up again with the same email doesn't add them twice. -->
     <header class="doc-head">
-      <h1>Thank you for testing BidVision.</h1>
-      <p class="lede">If the app stopped opening, that's the beta's built-in expiry date rather than anything breaking. Nothing is wrong on your end.</p>
+      <h1>Your copy of BidVision has expired.</h1>
+      <p class="lede">If the app stopped opening, that's the built-in expiry date on the older version rather than anything breaking. Nothing is wrong on your end.</p>
+      <div class="cta-row">
+        <a class="btn-lg" href="/beta">Download now</a>
+      </div>
     </header>
 
     <section class="step">
       <h2>What's happening</h2>
-      <p>I'm not going to push another beta build after this one. Based on the feedback I've gotten, I'm not convinced the current design adds up to a tool people will actually want to reach for, so I'm going to spend some time back at the drawing board instead of building further on a shape I'm unsure about.</p>
-      <p>Your bid sheets and settings never left your device, and anything you saved is still sitting there. You can delete the app or keep it, either is fine.</p>
+      <p>A working copy is out now for Mac, Windows and Android. It runs until November 20, 2027. Sign up on the download page and the downloads open straight away, no code needed.</p>
+      <p>Your bid sheets and settings never left your device, and anything you saved is still sitting there.</p>
+      <p>On iPhone or iPad, there isn't a version available right now.</p>
     </section>
 
     <section class="step">
       <h2>If you were one of the testers</h2>
-      <p>There's nothing you need to do, and no need to sign up for anything. I already have your details, so when there's something worth a look you'll hear from me directly. If you'd rather I delete them, just email me and they're gone.</p>
+      <p>Sign up again with the same email. It won't add you twice, it just opens the downloads on this device. If you'd rather I delete your details instead, email me and they're gone.</p>
       <div class="callout">
-        <h2>Any last feedback?</h2>
-        <p>I'd love to hear it, and there's no wrong answer. Even "I couldn't get it to work" or "I didn't have time to learn it" is genuinely useful. <a href="mailto:hello@bidvision.app">hello@bidvision.app</a>.</p>
+        <h2>Tried the new one?</h2>
+        <p>A quick note to <a href="mailto:hello@bidvision.app">hello@bidvision.app</a> helps a lot: did it install, did your bid sheet load, did it find trips that fit, was it useful? Even a one-word answer helps.</p>
       </div>
     </section>
 
     <section class="step">
-      <h2>If you're new here</h2>
-      <p>The beta has wrapped up, so there's nothing to download right now. If you'd like a note when there's something new worth trying, you can <a href="https://bidvision.app/beta">leave your email</a> and I'll reach out.</p>
-    </section>
-
-    <section class="step">
-      <h2>Thanks again</h2>
-      <p>I'm grateful anyone was willing to put their name down for an unfinished app built by someone they fly with. I still intend to make something properly useful, and when I do you'll be on the first list I reach out to.</p>
+      <h2>Thanks</h2>
+      <p>I'm grateful anyone was willing to put their name down for an unfinished app built by someone they fly with.</p>
     </section>
 
     <!-- ===== LIVE MODE (swap in at public launch) =====

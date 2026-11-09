@@ -39,6 +39,13 @@ done
 cd "$SCRIPT_DIR"
 fail() { echo "ERROR: $*" >&2; exit 1; }
 
+# --- guard 0: no unfilled placeholders --------------------------------------
+# Every list email must carry a real postal address (US commercial email rules).
+echo "==> [0/5] no placeholders in Code.gs"
+if grep -n "MAILING_ADDRESS_TBD" "$SRC"; then
+  fail "Code.gs still contains MAILING_ADDRESS_TBD. Set CONFIG.MAILING_ADDRESS to the real postal address before deploying."
+fi
+
 # --- guard 1: auth works (and, implicitly, it's the right account) -----------
 echo "==> [1/5] clasp auth"
 DEPLOYMENTS="$(clasp deployments 2>&1)" || {
