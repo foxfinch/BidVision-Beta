@@ -11,7 +11,7 @@
 // Apps Script web app URL (pinned production deployment; apps-script/deploy.sh checks this)
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbyjy2oY1J3wHCe1TUKbeEmWIgA7GXzkwb4R3J0TPVNG5Hmt3W8ElmlQcmN2kaW_xImoOg/exec';
 
-// Download URLs: current cut = v0.2.0-b10 on foxfinch/BidVision-Beta (published 2026-11-09).
+// Download URLs: current cut = v0.2.0-b10 on foxfinch/bidvision-site (published 2026-11-09).
 // Asset names read off the published release. b10 ships macOS (Apple Silicon + Intel),
 // Windows and Android here; iPhone and iPad come through the public TestFlight link
 // hardcoded in beta/index.html. No Linux.
@@ -22,7 +22,7 @@ const GAS_URL = 'https://script.google.com/macros/s/AKfycbyjy2oY1J3wHCe1TUKbeEmW
 // in-app wall sends people to /continue, which sends them here. If this still points at the
 // previous build, they download the very binary they came here to escape.
 const RELEASE = '0.2.0-b10';
-const BASE = `https://github.com/foxfinch/BidVision-Beta/releases/download/v${RELEASE}`;
+const BASE = `https://github.com/foxfinch/bidvision-site/releases/download/v${RELEASE}`;
 const DOWNLOADS = {
   'mac-arm':   `${BASE}/BidVision-macOS-Apple-Silicon-${RELEASE}.zip`,
   'mac-intel': `${BASE}/BidVision-macOS-Intel-${RELEASE}.zip`,

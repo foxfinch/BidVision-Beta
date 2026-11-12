@@ -14,13 +14,13 @@
  * unauthenticated limit (60/hr, pooled across all Apps Script projects on that IP)
  * is unreliable. Add a read-only GitHub token to make calls authenticated (5000/hr,
  * own quota): Project Settings → Script Properties → add  GH_TOKEN = <token>.
- * A fine-grained PAT scoped to foxfinch/BidVision-Beta with Contents:Read is plenty;
+ * A fine-grained PAT scoped to foxfinch/bidvision-site with Contents:Read is plenty;
  * even a no-scope token lifts you to the authenticated limit. Optional but recommended.
  */
 
 const REPORTER = {
   SHEET_ID: '1nfBx1L0yo4j20qjsfcP4mnaveSe0oQt5uz-78egYqNI',  // BidVision Beta Tracker
-  RELEASES_API: 'https://api.github.com/repos/foxfinch/BidVision-Beta/releases',
+  RELEASES_API: 'https://api.github.com/repos/foxfinch/bidvision-site/releases',
   TAB: 'Download Counts',
   TZ: 'America/New_York',
   HOUR: 7,  // ~7am ET
@@ -28,7 +28,7 @@ const REPORTER = {
 
 // Builds request headers, adding GitHub auth if a GH_TOKEN script property is set.
 function ghHeaders_() {
-  const headers = { 'Accept': 'application/vnd.github+json', 'User-Agent': 'BidVision-Beta-Tracker' };
+  const headers = { 'Accept': 'application/vnd.github+json', 'User-Agent': 'bidvision-site-Tracker' };
   const token = PropertiesService.getScriptProperties().getProperty('GH_TOKEN');
   if (token) headers['Authorization'] = 'Bearer ' + token.trim();
   return headers;
